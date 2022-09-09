@@ -1,0 +1,13 @@
+.announcement-bar{
+    width: 100%;
+    background-color: var(--color-secondary-4);
+    text-align: center;
+    padding: 1rem;
+}
+.announcement{
+    color: var(--color-primary-1);
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}

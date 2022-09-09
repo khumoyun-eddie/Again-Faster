@@ -1,0 +1,71 @@
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+/>
+{{'style.homepage-featured.css' | asset_url | stylesheet_tag}}
+<div class="homepage-featured-products">
+    <div class="homepage-featured-products__list swiper">
+        <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+            {% assign product = all_products[block.settings.product] %}
+            <div class="swiper-slide">
+                <img class="lazyload" 
+                src="{{product.featured_image.src | img_url:'300x'}}" 
+                data-src="{{img_url}}" 
+                data-width="[540,720,900,1080,1296,1512,1728,1944,2048]"
+                data-aspectratio="{{product.featured_image.aspect_ratio}}"
+                data-sizes="auto"
+                data-parent-fit="cover"
+                alt="{{product.featured_image.alt | escape}}">
+            <div class="homepage-featured-products__list-card">
+              <h5 class="heading-text heading-5">{{product.title}}</h5>
+              {% render 'icon-arrowR' %}
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    swiper = new Swiper(".homepage-featured-products__list ", {
+        slidesPerView:"{{section.settings.slider-number}}",
+        spaceBetween: 30,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+    });
+  </script>
+{% schema %}
+{
+  "name": "Featured Products",
+  "blocks": [
+    {
+      "type": "Featured-Product",
+      "name": "Featured Product",
+      "settings":[
+        {
+            "type": "product",
+            "id": "product",
+            "label": "Featured Product"
+        }
+      ]
+    }
+  ],
+  "settings":[
+    {
+        "type":"range",
+        "id":"slider-number",
+        "label":"Number of Slides Per View",
+        "max":6,
+        "min":2,
+        "step":1,
+        "default":4
+    }
+    
+  ]
+}
+{% endschema %}

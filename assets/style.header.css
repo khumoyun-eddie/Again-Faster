@@ -1,0 +1,38 @@
+.header{
+   position: absolute;
+   top: 5rem;
+   width: 100%;
+   z-index: 10;
+}
+.navigation{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);  
+    align-items: center;
+    padding: 0 4rem;
+}
+.navigation__logo{
+    display: block;
+}
+.navigation__list{
+    display: flex;
+    list-style: none;
+}
+.navigation__item:not(:first-of-type){
+    margin-left: 3rem;
+}
+.navigation__link{
+    text-decoration: none;
+    text-transform: uppercase;
+    color:var(--color-primary-2);
+    font-size: 1.2rem;
+    letter-spacing: .175em;
+}
+.navigation__user{
+    justify-self: flex-end;
+}
+.navigation__user>*:not(:first-child){
+    margin-left: 1.7rem;
+}
+.navigation__user svg path{
+    stroke: var(--color-primary-2);
+}

@@ -1,0 +1,31 @@
+:root {
+  --color-primary-1: #000;
+  --color-primary-2: #fff;
+  --color-primary-3: #c2a578;
+  --color-secondary-1: #767676;
+  --color-secondary-2: #c4c4c4;
+  --color-secondary-3: #f1f1f1;
+  --color-secondary-4: #fbfbfb;
+  --color-functional-1: #da0000;
+  --color-functional-2: #6FCF97;
+  --font-body: ;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Monserrat", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 16px;
+}

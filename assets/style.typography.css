@@ -1,0 +1,45 @@
+.heading-text {
+    text-transform: uppercase;
+  }
+  .heading-1 {
+    font-size: 6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    line-height: 130%;
+  }
+  .heading-1--light {
+    color: var(--color-primary-2);
+  }
+  .heading-2 {
+    font-size: 4rem;
+    letter-spacing: 0.18em;
+    line-height: 143%;
+  }
+  .heading-2--light{
+    color: var(--color-primary-2);
+  }
+  .heading-3 {
+    font-size: 2.8rem;
+    letter-spacing: 0.08em;
+    line-height: 130%;
+    font-weight: 400;
+  }
+  .heading-3--light {
+    color: var(--color-primary-2);
+  }
+  .heading-4 {
+    font-size: 2.4rem;
+    line-height: 130%;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  .heading-4--light {
+    color: var(--color-primary-2);
+  }
+  .heading-5{
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: .16em;
+    line-height: 168%;
+  }
+ 
