@@ -1,17 +1,24 @@
-{{ "style.homepage-hero.css" | asset_url | stylesheet_tag }}
+{{ 'style.homepage-hero.css' | asset_url | stylesheet_tag }}
 
-<div class="homepage-hero">
+<div class="container">
+  <div class="homepage-hero">
     <div class="homepage-hero__content">
-        <h1 class="heading-text heading-1 heading-1--light">{{ section.settings.hero_title }}</h1>
-        <p class="homepage-hero__text">{{ section.settings.hero_text }}</p>
-        <a class="btn btn-secondary btn-secondary--light" href="{{section.settings.hero_cta_url}}">{{section.settings.hero_cta_label}}</a>
+      <h1 class="heading-text heading-1 heading-1--light">{{ section.settings.hero_title }}</h1>
+      <p class="homepage-hero__text">{{ section.settings.hero_text }}</p>
+      {%
+        render 'button-secondary',
+        btnType: 'light',
+        url: {{section.settings.hero_cta_url}},
+        title: {{section.settings.hero_cta_label}}
+      %}
     </div>
+  </div>
 </div>
 
 <style>
-    .homepage-hero{
-        background-image: url("{{section.settings.hero_image.src | img_url:'1920x'}}");
-    }
+  .homepage-hero {
+    background-image: url('{{ section.settings.hero_image.src | image_url: width: 1920 }}');
+  }
 </style>
 
 {% schema %}
@@ -24,31 +31,29 @@
       "label": "Hero Image"
     },
     {
-        "type": "text",
-        "id": "hero_title",
-        "label": "Hero Title",
-        "default":"Team barbell"
-      },
-      {
-        "type": "text",
-        "id": "hero_text",
-        "label": "Hero Text",
-        "default":"Team Barbell was to design a piece of equipment that matches the performance and quality of other elite level competition bars."
-      },
-      {
-        "type": "text",
-        "id": "hero_cta_label",
-        "label": "Hero Cta Label",
-        "default":"Explore"
-      },
-      {
-        "type": "url",
-        "id": "hero_cta_url",
-        "label": "Hero Cta Url"
-      }
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Team barbell"
+    },
+    {
+      "type": "text",
+      "id": "hero_text",
+      "label": "Hero Text",
+      "default": "Team Barbell was to design a piece of equipment that matches the performance and quality of other elite level competition bars."
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_label",
+      "label": "Hero Cta Label",
+      "default": "Explore"
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_url",
+      "label": "Hero Cta Url"
+    }
   ],
-  "blocks": [
-
-  ]
+  "blocks": []
 }
 {% endschema %}

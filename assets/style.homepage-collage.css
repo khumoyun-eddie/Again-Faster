@@ -1,0 +1,18 @@
+.homepage-collage {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  column-gap: 6rem;
+  padding:4rem 8.6rem 12rem 0;
+}
+.main-block {
+  grid-column: 1/2;
+}
+.main-block img {
+  /* width: 100%; */
+}
+.second-block {
+  grid-column: 2/3;
+}
+.second-block__img-box img {
+  /* width: 100%; */
+}

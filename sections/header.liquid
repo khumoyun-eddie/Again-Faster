@@ -1,21 +1,29 @@
-{{ "style.header.css" | asset_url | stylesheet_tag }}
-<header class="header">
-  <nav class="navigation">
-    <img class="navigation__logo" src="{{section.settings.logo.src | img_url: '240x'}}" alt="{{section.settings.logo.alt}}">
-    <ul class="navigation__list">
-    {% for link in linklists['again-faster-home-menu'].links %}
-      <li class="navigation__item">
-        <a class="navigation__link" href="{{ link.url }}">{{link.title}}</a>
-      </li>
-    {% endfor %}
-    </ul>
-    <div class="navigation__user">
-    {% render "icon-search" %}
-    {% render "icon-avatar" %}
-    {% render "icon-cart" %}
-    </div>
-  </nav>
-</header>
+{{ 'style.header.css' | asset_url | stylesheet_tag }}
+<div class="container">
+  <header class="header">
+    <nav class="navigation">
+      {% # theme-check-disable %}
+      <img
+        class="navigation__logo"
+        src="{{section.settings.logo.src | img_url: '240x'}}"
+        alt="{{section.settings.logo.alt}}"
+      >
+      {% # theme-check-enable %}
+      <ul class="navigation__list">
+        {% for link in linklists['again-faster-home-menu'].links %}
+          <li class="navigation__item">
+            <a class="navigation__link" href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="navigation__user">
+        {% render 'icon-search' %}
+        {% render 'icon-avatar' %}
+        {% render 'icon-cart' %}
+      </div>
+    </nav>
+  </header>
+</div>
 
 {% schema %}
 {
@@ -27,8 +35,6 @@
       "label": "Logo"
     }
   ],
-  "blocks": [
-
-  ]
+  "blocks": []
 }
 {% endschema %}

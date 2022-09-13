@@ -23,3 +23,7 @@
 .homepage-featured-products__list .swiper-slide:hover .homepage-featured-products__list-card svg{
     display: block;
 }
+.homepage-featured-products__list .swiper-scrollbar{
+    position: relative;
+    margin-top: 4rem;
+}

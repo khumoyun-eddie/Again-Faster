@@ -1,0 +1,19 @@
+.homepage-cta{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20rem 8rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 90vh;
+}
+.homepage-cta__content{
+    width: 40%;
+}
+.homepage-cta__text{
+    color: var(--color-primary-2);
+    margin: 2.4rem 0 4rem 0;
+    line-height: 167.5%;
+    font-size: 1.4rem;
+}

@@ -1,44 +1,60 @@
-<link
-rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-/>
-{{'style.homepage-featured.css' | asset_url | stylesheet_tag}}
-<div class="homepage-featured-products">
+{{ 'style.homepage-featured.css' | asset_url | stylesheet_tag }}
+<div class="container">
+  <div class="homepage-featured-products">
     <div class="homepage-featured-products__list swiper">
-        <div class="swiper-wrapper">
-            {% for block in section.blocks %}
-            {% assign product = all_products[block.settings.product] %}
-            <div class="swiper-slide">
-                <img class="lazyload" 
-                src="{{product.featured_image.src | img_url:'300x'}}" 
-                data-src="{{img_url}}" 
-                data-width="[540,720,900,1080,1296,1512,1728,1944,2048]"
-                data-aspectratio="{{product.featured_image.aspect_ratio}}"
-                data-sizes="auto"
-                data-parent-fit="cover"
-                alt="{{product.featured_image.alt | escape}}">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% assign product = all_products[block.settings.product] %}
+          <div class="swiper-slide">
+            {% # theme-check-disable %}
+            <img
+              class="lazyload"
+              src="{{product.featured_image.src | image_url: width: 300}}"
+              data-src="{{image_url}}"
+              data-width="[540,720,900,1080,1296,1512,1728,1944,2048]"
+              data-aspectratio="{{product.featured_image.aspect_ratio}}"
+              data-sizes="auto"
+              data-parent-fit="cover"
+              alt="{{product.featured_image.alt | escape}}"
+            >
+            {% # theme-check-enable %}
             <div class="homepage-featured-products__list-card">
-              <h5 class="heading-text heading-5">{{product.title}}</h5>
-              {% render 'icon-arrowR' %}
+              <h5 class="heading-text heading-5">{{ product.title }}</h5>
+              {% render 'icon-arrowR', fill: 'black' %}
             </div>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="swiper-pagination"></div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-scrollbar"></div>
     </div>
+  </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>
-    swiper = new Swiper(".homepage-featured-products__list ", {
-        slidesPerView:"{{section.settings.slider-number}}",
-        spaceBetween: 30,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-    });
-  </script>
+  swiper = new Swiper('.homepage-featured-products__list ', {
+    slidesPerView: '{{ section.settings.slider-number }}',
+    spaceBetween: '{{ section.settings.space-between }}',
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      hide: false,
+      dragSize: 150,
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      480: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      640: {
+        slidesPerView: '{{ section.settings.slider-number }}',
+        spaceBetween: '{{ section.settings.space-between }}',
+      },
+    },
+  });
+</script>
 {% schema %}
 {
   "name": "Featured Products",
@@ -46,26 +62,31 @@ href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     {
       "type": "Featured-Product",
       "name": "Featured Product",
-      "settings":[
+      "settings": [
         {
-            "type": "product",
-            "id": "product",
-            "label": "Featured Product"
+          "type": "product",
+          "id": "product",
+          "label": "Featured Product"
         }
       ]
     }
   ],
-  "settings":[
+  "settings": [
     {
-        "type":"range",
-        "id":"slider-number",
-        "label":"Number of Slides Per View",
-        "max":6,
-        "min":2,
-        "step":1,
-        "default":4
+      "type": "range",
+      "id": "slider-number",
+      "label": "Number of Slides Per View",
+      "max": 6,
+      "min": 2,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "number",
+      "id": "space-between",
+      "label": "Space between slides",
+      "default": 14
     }
-    
   ]
 }
 {% endschema %}

@@ -1,0 +1,57 @@
+{{ 'style.homepage-cta.css' | asset_url | stylesheet_tag }}
+<div class="container">
+  <div class="homepage-cta {{ section.id }}">
+    <div class="homepage-cta__content">
+      <h2 class="heading-text heading-2 heading-2--light">{{ section.settings.title }}</h2>
+      <p class="homepage-cta__text">{{ section.settings.info }}</p>
+      {% render 'button-secondary', btnType: 'light', url: {{section.settings.button_url}}, title: {{section.settings.button}} %}
+    </div>
+  </div>
+</div>
+<style>
+  .{{ section.id }}.homepage-cta{
+    background-image: url('{{ section.settings.bg_image.src | image_url: width: 1440 }}');
+  }
+</style>
+{% schema %}
+{
+  "tag": "section",
+  "name": "Homepage CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Training in comfort",
+      "label": "Section Title"
+    },
+    {
+      "type": "text",
+      "id": "info",
+      "default": "Info",
+      "label": "Section Info"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "default": "Shop Now",
+      "label": "Section Button"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Section Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "category": "banner",
+      "name": "Homepage CTA"
+    }
+  ]
+}
+{% endschema %}

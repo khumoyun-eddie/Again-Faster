@@ -1,0 +1,23 @@
+{
+    "sections": {
+      "homepage-hero": {
+        "type": "homepage-hero"
+      },
+      "homepage-featured-products": {
+        "type": "homepage-featured-products"
+      },
+      "homepage-collage": {
+        "type": "homepage-collage"
+      },
+    "homepage-cta":{
+        "type":"homepage-cta",
+        "id":"homepage-cta"
+    }
+    },
+    "order": [
+      "homepage-hero",
+      "homepage-featured-products",
+      "homepage-collage",
+      "homepage-cta"
+    ]
+  }

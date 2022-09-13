@@ -1,0 +1,93 @@
+{{ 'style.homepage-collage.css' | asset_url | stylesheet_tag }}
+<div class="container">
+  <div class="homepage-collage">
+    <div class="main-block">
+      {% # theme-check-disable %}
+      <img
+        class="lazyload"
+        src="{{section.settings.image_large.src | img_url:'1200x1024'}}"
+        data-src="{{img_url}}"
+        data-width="[540,720,900,1080,1296,1512,1728,1944,2048]"
+        data-aspectratio="{{section.settings.image_large.aspect_ratio}}"
+        data-sizes="auto"
+        data-parent-fit="cover"
+        alt="{{section.settings.image_large.alt | escape}}"
+      >
+    </div>
+    <div class="second-block">
+      <div class="second-block__img-box">
+        <img
+          class="lazyload"
+          src="{{section.settings.image_small.src | img_url:'800x628'}}"
+          data-src="{{img_url}}"
+          data-width="[540,720,900,1080,1296,1512,1728,1944,2048]"
+          data-aspectratio="{{section.settings.image_small.aspect_ratio}}"
+          data-sizes="auto"
+          data-parent-fit="cover"
+          alt="{{section.settings.image_small.alt | escape}}"
+        >
+      </div>
+      {% # theme-check-enable %}
+      <div class="second-block__content">
+        <h5 class="heading-text heading-5">
+          {{ section.settings.sub_heading }}
+        </h5>
+        <h4 class="heading-text heading-4">
+          {{ section.settings.heading }}
+        </h4>
+        <div class="second-block__text">
+          {{ section.settings.info }}
+        </div>
+        {% render 'button-cta', url:{{section.settings.button_url}},title:{{section.settings.button}} %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "tag": "div",
+  "name": "Homepage Collage",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Multimedia collage",
+      "label": "Collage Heading"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "default": "Multimedia collage 2",
+      "label": "Collage Sub-Heading"
+    },
+    {
+      "type": "text",
+      "id": "info",
+      "default": "Info",
+      "label": "Collage Info"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "default": "Shop Weights",
+      "label": "Collage Button"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Collage Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_large",
+      "label": "Collage Main Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_small",
+      "label": "Collage Sub Image"
+    }
+  ]
+}
+{% endschema %}
