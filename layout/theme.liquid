@@ -7,20 +7,16 @@
     <meta name="description" content="{{ page_description | escape }}">
     <link rel="canonical" href="{{ canonical_url }}">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-    >
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
     {{ content_for_header }}
     <!-- Header hook for plugins -->
-    <script src="../assets/script.lazisizes.min.js" async=""></script>
-  </head>
-  <body>
+
     {{ 'style.base.css' | asset_url | stylesheet_tag }}
     {{ 'style.typography.css' | asset_url | stylesheet_tag }}
     {{ 'style.buttons.css' | asset_url | stylesheet_tag }}
-
+    <script src="{{ 'script.lazisizes.min.js' | asset_url }}" defer></script>
+  </head>
+  <body class="{% if template == "index" %}home{% endif %}">
     {% section 'announcement' %}
     {% section 'header' %}
     <main role="main">

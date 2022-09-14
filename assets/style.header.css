@@ -23,9 +23,13 @@
 .navigation__link{
     text-decoration: none;
     text-transform: uppercase;
-    color:var(--color-primary-2);
     font-size: 1.2rem;
     letter-spacing: .175em;
+    color:var(--color-primary-1);
+
+}
+.home .navigation__link{
+    color:var(--color-primary-2);
 }
 .navigation__user{
     justify-self: flex-end;
@@ -33,6 +37,10 @@
 .navigation__user>*:not(:first-child){
     margin-left: 1.7rem;
 }
-.navigation__user svg path{
+.home .navigation__user svg path{
     stroke: var(--color-primary-2);
+}
+
+.navigation__user svg path{
+    stroke: var(--color-primary-1);
 }

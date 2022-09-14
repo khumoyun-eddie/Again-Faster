@@ -1,0 +1,26 @@
+{{ 'style.collection-list.css' | asset_url | stylesheet_tag }}
+<div class="container">
+  <div class="collection-hero">
+    <div class="collection-hero__content">
+      <h5 class="heading-text heading-5">{{ collection.metafields.accentuate.eyebrow }}</h5>
+      <h2 class="heading-text heading-2">{{ collection.metafields.accentuate.title }}</h1>
+      {% render 'button-secondary', url: {{collection.metafields.accentuate.cta_url}}, title: {{collection.metafields.accentuate.cta_label}} %}
+    </div>
+    <div class="collection-hero__banner">
+      <div class="collection-hero__image collection-hero__image--1">
+        {% for item in collection.metafields.accentuate.image_1 %}
+          <img class="" src="{{ item.src }}" alt="img" loading="lazy" width="{{ item.width }}" height="{{ item.height }}">
+        {% endfor %}
+      </div>
+      <div class="collection-hero__image collection-hero__image--2">
+        {% for item in collection.metafields.accentuate.image_2 %}
+          <img class="" src="{{ item.src }}" alt="img" loading="lazy" width="{{ item.width }}" height="{{ item.height }}">
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const c = {{ collection.metafields.accentuate.image_1 | json }}
+  console.log(c)
+</script>

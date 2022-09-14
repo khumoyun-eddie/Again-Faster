@@ -1,3 +1,10 @@
+{% comment %}
+   <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+  >
+{% endcomment %}
+{{ 'https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 {{ 'style.homepage-featured.css' | asset_url | stylesheet_tag }}
 <div class="container">
   <div class="homepage-featured-products">
@@ -30,6 +37,7 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js" defer></script>
 <script>
   swiper = new Swiper('.homepage-featured-products__list ', {
     slidesPerView: '{{ section.settings.slider-number }}',

@@ -1,0 +1,22 @@
+{{ 'style.collection-list.css' | asset_url | stylesheet_tag }}
+<div class="container">
+  <div class="collection-list">
+    {% assign selected_tags = collection.metafields.accentuate.collectionsmaster | split: '|' %}
+    {% for collection in selected_tags %}
+      <div class="collection-list__item">
+        <img
+          src="{{ collections[collection].image.src | img_url: 'medium' }}"
+          alt=""
+          loading="lazy"
+        >
+        <h5 class="heading-text heading-5">
+          {{ collections[collection].title | link_to: collections[collection].url }}
+        </h5>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% comment %}
+
+
+{% endcomment %}

@@ -1,8 +1,12 @@
-{% case btnType %} 
-    {% when 'light' %}
-        <a class="btn btn-secondary btn-secondary--light" href="{{ url }}">{{ title }}
-            {% render 'icon-arrowR', fill:'white' %}
-        </a>
-    {% else %} 
-        <a class="btn btn-secondary" href="{{ url }}">{{ title }}</a>
+{% case btnType %}
+  {% when 'light' %}
+    <a class="btn btn-secondary btn-secondary--light" href="{{ url }}">
+      {{ title }}
+      {% render 'icon-arrowR', fill: 'white' %}
+    </a>
+  {% else %}
+    <a class="btn btn-secondary" href="{{ url }}">
+      {{ title }}
+      {% render 'icon-arrowR', fill: 'black' %}
+    </a>
 {% endcase %}

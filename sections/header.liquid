@@ -3,11 +3,19 @@
   <header class="header">
     <nav class="navigation">
       {% # theme-check-disable %}
-      <img
-        class="navigation__logo"
-        src="{{section.settings.logo.src | img_url: '240x'}}"
-        alt="{{section.settings.logo.alt}}"
-      >
+      {% if template == 'index' %}
+        <img
+          class="navigation__logo"
+          src="{{section.settings.logo-light.src | img_url: '240x'}}"
+          alt="{{section.settings.logo-light.alt}}"
+        >
+      {% else %}
+        <img
+          class="navigation__logo"
+          src="{{section.settings.logo-dark.src | img_url: '240x'}}"
+          alt="{{section.settings.logo-dark.alt}}"
+        >
+      {% endif %}
       {% # theme-check-enable %}
       <ul class="navigation__list">
         {% for link in linklists['again-faster-home-menu'].links %}
@@ -31,8 +39,13 @@
   "settings": [
     {
       "type": "image_picker",
-      "id": "logo",
-      "label": "Logo"
+      "id": "logo-light",
+      "label": "Logo Light"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo-dark",
+      "label": "Logo Dark"
     }
   ],
   "blocks": []

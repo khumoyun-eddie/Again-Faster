@@ -1,18 +1,90 @@
 {
     "sections": {
       "homepage-hero": {
-        "type": "homepage-hero"
+        "type": "homepage-hero",
+        "settings": {
+          "hero_image": "shopify:\/\/shop_images\/AF_Hero-full_1.jpg",
+          "hero_title": "Team barbell",
+          "hero_text": "Team Barbell was to design a piece of equipment that matches the performance and quality of other elite level competition bars.",
+          "hero_cta_label": "Explore",
+          "hero_cta_url": ""
+        }
       },
       "homepage-featured-products": {
-        "type": "homepage-featured-products"
+        "type": "homepage-featured-products",
+        "blocks": {
+          "46a0e227-033a-417d-be3c-7d86b73f77a0": {
+            "type": "Featured-Product",
+            "settings": {
+              "product": "bumper-plates"
+            }
+          },
+          "c842bf21-82b6-487b-a010-1f7cada0b652": {
+            "type": "Featured-Product",
+            "settings": {
+              "product": "squat-racks"
+            }
+          },
+          "77c091e3-342a-425d-9b48-ffa9ec26f832": {
+            "type": "Featured-Product",
+            "settings": {
+              "product": "garage-package"
+            }
+          },
+          "d510b45b-1041-4bf6-848a-7e859589641a": {
+            "type": "Featured-Product",
+            "settings": {
+              "product": "affiliate-outfitting"
+            }
+          },
+          "94487279-7603-4564-8b91-0983cb61ae77": {
+            "type": "Featured-Product",
+            "settings": {
+              "product": "barbells"
+            }
+          },
+          "d6338f0b-b128-4256-a16e-7c09f4908c6a": {
+            "type": "Featured-Product",
+            "settings": {
+              "product": "bumper-plates"
+            }
+          }
+        },
+        "block_order": [
+          "46a0e227-033a-417d-be3c-7d86b73f77a0",
+          "c842bf21-82b6-487b-a010-1f7cada0b652",
+          "77c091e3-342a-425d-9b48-ffa9ec26f832",
+          "d510b45b-1041-4bf6-848a-7e859589641a",
+          "94487279-7603-4564-8b91-0983cb61ae77",
+          "d6338f0b-b128-4256-a16e-7c09f4908c6a"
+        ],
+        "settings": {
+          "slider-number": 4,
+          "space-between": 14
+        }
       },
       "homepage-collage": {
-        "type": "homepage-collage"
+        "type": "homepage-collage",
+        "settings": {
+          "heading": "TRULY, AN ALL IN ONE BARBELL",
+          "sub_heading": "Best seller",
+          "info": "Design that matches the performance and quality of other elite level competition bars",
+          "button": "Shop Weights",
+          "button_url": "",
+          "image_large": "shopify:\/\/shop_images\/Rectangle_27.jpg",
+          "image_small": "shopify:\/\/shop_images\/Rectangle_28.jpg"
+        }
       },
-    "homepage-cta":{
-        "type":"homepage-cta",
-        "id":"homepage-cta"
-    }
+      "homepage-cta": {
+        "type": "homepage-cta",
+        "settings": {
+          "title": "Training in comfort",
+          "info": "Incredibly soft Airlume combed and ringspun cotton + poly fabric provides excellent stretch and recovery during even the most intense workouts.",
+          "button": "Shop Now",
+          "button_url": "",
+          "bg_image": "shopify:\/\/shop_images\/Copy_of_0S8A5994_1.jpg"
+        }
+      }
     },
     "order": [
       "homepage-hero",
