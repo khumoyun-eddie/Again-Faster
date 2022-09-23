@@ -4,11 +4,13 @@
     {% assign selected_tags = collection.metafields.accentuate.collectionsmaster | split: '|' %}
     {% for collection in selected_tags %}
       <div class="collection-list__item">
+        {% # theme-check-disable %}
         <img
           src="{{ collections[collection].image.src | img_url: 'medium' }}"
           alt=""
           loading="lazy"
         >
+        {% # theme-check-enable %}
         <h5 class="heading-text heading-5">
           {{ collections[collection].title | link_to: collections[collection].url }}
         </h5>
@@ -16,7 +18,3 @@
     {% endfor %}
   </div>
 </div>
-{% comment %}
-
-
-{% endcomment %}

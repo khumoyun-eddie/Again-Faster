@@ -4,7 +4,7 @@
    width: 100%;
    z-index: 10;
 }
-.navigation{
+.navigation .container{
     display: grid;
     grid-template-columns: repeat(3,1fr);  
     align-items: center;
@@ -26,7 +26,6 @@
     font-size: 1.2rem;
     letter-spacing: .175em;
     color:var(--color-primary-1);
-
 }
 .home .navigation__link{
     color:var(--color-primary-2);

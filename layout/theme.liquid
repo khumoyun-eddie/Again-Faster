@@ -14,7 +14,7 @@
     {{ 'style.base.css' | asset_url | stylesheet_tag }}
     {{ 'style.typography.css' | asset_url | stylesheet_tag }}
     {{ 'style.buttons.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'script.lazisizes.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'lazisizes.min.js' | asset_url }}" defer></script>
   </head>
   <body class="{% if template == "index" %}home{% endif %}">
     {% section 'announcement' %}

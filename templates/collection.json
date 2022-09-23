@@ -1,0 +1,81 @@
+{
+  "sections": {
+    "collection": {
+      "type": "collection-plp",
+      "blocks": {
+        "d739dd62-9a7d-42c7-bc6f-3fff7000d519": {
+          "type": "breadcrumb",
+          "settings": {
+            "col_link": "shopify:\/\/collections\/barbells",
+            "collection_title": "Barbells"
+          }
+        },
+        "5d43621a-9913-47c6-a29f-b5a165be5665": {
+          "type": "breadcrumb",
+          "settings": {
+            "col_link": "shopify:\/\/collections\/bumper-plates",
+            "collection_title": "Bumper plates"
+          }
+        },
+        "c2bc93f6-dfe0-46ed-9977-b1427eb8839e": {
+          "type": "breadcrumb",
+          "settings": {
+            "col_link": "shopify:\/\/collections\/squat-stand-racks",
+            "collection_title": "Squat stand & racks"
+          }
+        },
+        "6d885ddd-4b05-492c-818c-12f570474dcf": {
+          "type": "breadcrumb",
+          "settings": {
+            "col_link": "shopify:\/\/collections\/weights",
+            "collection_title": "Weights"
+          }
+        },
+        "d296c99b-8bfe-458b-8ffd-9a0c77e96c9f": {
+          "type": "breadcrumb",
+          "settings": {
+            "col_link": "shopify:\/\/collections\/medicine-balls",
+            "collection_title": "Medicine balls"
+          }
+        },
+        "a4cf0cb2-2b83-4a24-b965-6d35beeb5de4": {
+          "type": "breadcrumb",
+          "settings": {
+            "col_link": "shopify:\/\/collections\/gdc",
+            "collection_title": "GDC"
+          }
+        },
+        "cbec976d-8746-4b29-bc08-c238d3dbb794": {
+          "type": "breadcrumb",
+          "settings": {
+            "col_link": "shopify:\/\/collections\/jerk-block-set",
+            "collection_title": "Jerk block set"
+          }
+        },
+        "c714b569-1ab0-4aab-8ed8-6dec29e7b168": {
+          "type": "breadcrumb",
+          "settings": {
+            "col_link": "shopify:\/\/collections\/accessories",
+            "collection_title": "Accessories"
+          }
+        }
+      },
+      "block_order": [
+        "d739dd62-9a7d-42c7-bc6f-3fff7000d519",
+        "5d43621a-9913-47c6-a29f-b5a165be5665",
+        "c2bc93f6-dfe0-46ed-9977-b1427eb8839e",
+        "6d885ddd-4b05-492c-818c-12f570474dcf",
+        "d296c99b-8bfe-458b-8ffd-9a0c77e96c9f",
+        "a4cf0cb2-2b83-4a24-b965-6d35beeb5de4",
+        "cbec976d-8746-4b29-bc08-c238d3dbb794",
+        "c714b569-1ab0-4aab-8ed8-6dec29e7b168"
+      ],
+      "settings": {
+        "col_nums": 3
+      }
+    }
+  },
+  "order": [
+    "collection"
+  ]
+}

@@ -1,0 +1,110 @@
+{{ 'style.products-list.css' | asset_url | stylesheet_tag }}
+{{ 'style.product-card.css' | asset_url | stylesheet_tag }}
+<style>
+  .product-list__content {
+    grid-template-columns: repeat({{section.settings.col_nums}}, 1fr);
+  }
+</style>
+<div class="container">
+  <div class="products-list">
+    <div class="products-list__header">
+      <h4 class="heading-text heading-4">{{ collection.title | upcase }}</h4>
+      <ul class="products-list__nav">
+        {% for block in section.blocks %}
+          {% assign item = block.settings %}
+          <li class="products-list__nav-item">
+            <a
+              href="{{ item.col_link }}"
+              class="products-list__nav-link {% if collection.title == item.collection_title %} active {% endif %}"
+            >
+              {{ item.collection_title | upcase }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="products-list__content">
+      {% for item in collection.products %}
+        <div class="products-list__item card">
+          <div class="card__header {% unless item.available %} unavailable {% endunless %}">
+            <ul class="card__tag-list">
+              {% for tag in item.tags %}
+                <li class="card__tag card__tag--{{ tag | downcase | split: ' ' | join: '-' }}">
+                  {{ tag | capitalize }}
+                </li>
+              {% endfor %}
+            </ul>
+            {% # theme-check-disable %}
+            <img
+              src="{{ item.images[0] | image_url: width: 600 }}"
+              loading="lazy"
+              alt=""
+              data-aspectratio="{{ item.aspect_ratio }}"
+              data-sizes="auto"
+              data-parent-fit="cover"
+              alt="{{ product.featured_image.alt | escape }}"
+            >
+            {% # theme-check-enable %}
+            <p class="card__unavailable">Sold Out - Get notified when back in stock</p>
+          </div>
+
+          <div class="card__content">
+            <h5 class="heading-text heading-5 card__title">{{ item.title | upcase | link_to: item.url }}</h5>
+            <div class="card__review">
+              {% liquid
+                render 'icon-star'
+                render 'icon-star'
+                render 'icon-star'
+                render 'icon-star'
+                render 'icon-star'
+              %}
+            </div>
+            <div class="card__price">
+              {{ item.price | money }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Products List Page",
+  "blocks": [
+    {
+      "type": "breadcrumb",
+      "name": "Breadcrumb",
+      "settings": [
+        {
+          "type": "url",
+          "id": "col_link",
+          "label": "Collection Link",
+          "info": "Navigation link to the Collection"
+        },
+        {
+          "type": "text",
+          "id": "collection_title",
+          "label": "Collection Name"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "range",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "id": "col_nums",
+      "label": "Number of Column",
+      "default": 3
+    }
+  ]
+}
+{% endschema %}
+<script>
+  const text = {{ collection.products | json }}
+  console.log(text)
+</script>

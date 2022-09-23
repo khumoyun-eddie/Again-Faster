@@ -13,6 +13,9 @@
 }
 
 .btn-primary {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 .btn-primary:hover {
   background-color: var(--color-primary-2);

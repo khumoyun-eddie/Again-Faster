@@ -1,7 +1,7 @@
 {{ 'style.header.css' | asset_url | stylesheet_tag }}
-<div class="container">
-  <header class="header">
-    <nav class="navigation">
+<header class="header">
+  <nav class="navigation">
+    <div class="container">
       {% # theme-check-disable %}
       {% if template == 'index' %}
         <img
@@ -29,9 +29,9 @@
         {% render 'icon-avatar' %}
         {% render 'icon-cart' %}
       </div>
-    </nav>
-  </header>
-</div>
+    </div>
+  </nav>
+</header>
 
 {% schema %}
 {
@@ -47,7 +47,6 @@
       "id": "logo-dark",
       "label": "Logo Dark"
     }
-  ],
-  "blocks": []
+  ]
 }
 {% endschema %}

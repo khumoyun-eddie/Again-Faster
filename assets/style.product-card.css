@@ -1,0 +1,96 @@
+
+
+.card__header {
+  background-color: var(--color-secondary-3);
+  text-align: center;
+  position: relative;
+  transition: all .3s;
+}
+.card__header img {
+  height: 50rem;
+}
+.card__header--small img{
+  height: 41rem;
+}
+.card__tag-list {
+  display: flex;
+  position: absolute;
+  top: 1rem;
+  left: 0.5rem;
+  list-style: none;
+}
+.card__tag {
+  padding: 4px 1.6rem;
+  font-size: 1.2rem;
+}
+.card__tag:not(:first-of-type) {
+  margin-left: 8px;
+}
+.card__tag--best-seller {
+  background-color: var(--color-primary-1);
+  color: var(--color-primary-2);
+}
+.card__tag--free-shipping {
+  background-color: var(--color-primary-2);
+  color: var(--color-primary-1);
+}
+.card__tag--sale {
+  background-color: var(--color-functional-1);
+  color: var(--color-primary-2);
+}
+.card__tag--pre-order {
+  background-color: transparent;
+  color: var(--color-primary-1);
+}
+.card__content{
+    margin-top: 8px;
+}
+.card__title a{
+  font-family: var(--secondary-font);
+  font-size: 1.2rem;
+  line-height: 168%;
+  letter-spacing: 0.16em;
+  color: var(--color-primary-1);
+  text-decoration: none;
+}
+.card__review {
+  margin: 8px 0;
+}
+.card__price {
+  font-family: var(--secondary-font);
+  font-size: 1.2rem;
+  letter-spacing: 0.16em;
+  color: #353535;
+  line-height: 168%;
+}
+.card__unavailable{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 4px 1.6rem;
+  width: 70%;
+  display: none;
+  background-color: var(--color-primary-2);
+  transition: all .2s linear;
+}
+.card__unavailable:hover{
+  color: var(--color-primary-2);
+  background-color: var(--color-primary-1);
+}
+.unavailable img{
+  opacity: .5;
+}
+.unavailable .card__unavailable{
+  display: block;
+}
+.unavailable .card__tag-list{
+  display: none;
+}
+
+.card:hover .card__header{
+  transform: scale(1.03);
+}
+.card:hover .card__title a{
+  border-bottom: 1px solid var(--color-primary-1);
+}

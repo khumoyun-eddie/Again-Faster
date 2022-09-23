@@ -1,10 +1,11 @@
 .footer {
   background-color: var(--color-secondary-3);
+}
+.footer__content{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   column-gap: 15rem;
   padding: 8rem 15rem 2.4rem;
-
   position: relative;
 }
 .footer__logo{

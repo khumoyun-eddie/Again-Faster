@@ -1,0 +1,249 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+>
+{{ 'style.main-product.css' | asset_url | stylesheet_tag }}
+{{ 'style.products-list.css' | asset_url | stylesheet_tag }}
+{{ 'style.product-card.css' | asset_url | stylesheet_tag }}
+
+<div class="main-product">
+  <div class="container">
+    <div class="main-product__wrapper">
+      <div class="product-gallery swiper">
+        <div class="swiper-wrapper">
+          {% for img in product.images %}
+            <div class="swiper-slide">
+              <img
+                src="{{ img | image_url: width: '720', height: '900' }}"
+                data-src="{{ image_url }}"
+                data-aspectratio="{{ img.asperct_ratio }}"
+                data-sizes="auto"
+                loading="lazy"
+                data-parent-fit="cover"
+                alt="{{ img.alt | escape }}"
+                class="lazyload"
+              >
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="product-details">
+        <h4 class="heading-text heading-4">{{ product.title }}</h4>
+
+        <p class="product-details__price">{{ product.price | money }}</p>
+
+        <div class="product-details__review">
+          {% liquid
+            render 'icon-star'
+            render 'icon-star'
+            render 'icon-star'
+            render 'icon-star'
+            render 'icon-star'
+          %}
+
+          <p>18 reviews</p>
+        </div>
+        <div class="product-details__review">
+          {% render 'icon-affirm' %}
+          <p>pay as low as 56/mo Learn More</p>
+        </div>
+        <div class="product-details__description">{{ product.description }}</div>
+        <div class="product-details__variants-list">
+          {% for variant in product.variants %}
+            {% assign price = variant.price %}
+            {% assign quantity = variant.inventory_quantity %}
+            <input
+              type="radio"
+              name="variant"
+              id="{{ variant.id }}"
+              {% if quantity <= 0 %}
+                disabled
+              {% endif %}
+            >
+            <label
+              for="{{ variant.id }}"
+              data-price="{{ price }}"
+              class="product-details__variants-item{% if quantity <= 0 %} disabled {% endif %}"
+            >
+              {{ variant.title }}
+            </label>
+          {% endfor %}
+        </div>
+        <p class="product-details__services">Available for Free shipping!</p>
+        {%
+          render 'button-primary',
+          url: {{section.settings.link_cart}},
+          title: {{section.settings.add_cart_title}}
+        %}
+        <div class="product-details__frequent">
+          {% assign selected_handles = product.metafields.accentuate.frequently_bought | split: '|' %}
+          {% for product in selected_handles %}
+            <div class="product-details__product">
+              <div class="product-details__img-wrapper">
+                <img
+                  class="lazyload"
+                  src="{{ all_products[product].featured_image | img_url: '98x125' }}"
+                  data-src="{{ img_url }}"
+                  data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                  data-aspectratio="{{all_products[product].featured_image.aspect_ratio }}"
+                  data-sizes="auto"
+                  loading="lazy"
+                  width
+                  height
+                  data-parent-fit="cover"
+                  alt="{{ all_products[product].featured_image.alt | escape }}"
+                >
+              </div>
+              <div class="product__details">
+                <p class="p product__details--text">{{ all_products[product].title }}</p>
+                <a href="#" class="p product__details--text">Add to Cart</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="product-banner">
+  <span class="line line--1"></span>
+  <span class="line line--2"></span>
+  <span class="line line--3"></span>
+  <div class="container">
+    {% assign banner_markup = product.metafields.accentuate.banner_markup %}
+    {% assign banner_image = product.metafields.accentuate.banner_image %}
+
+    {% for item in (1..banner_markup.size) %}
+      <div class="product-banner__wrapper">
+        <div class="product-banner__content">
+          {% if banner_markup[forloop.index0] != blank %}
+            {{ banner_markup[forloop.index0] }}
+          {% endif %}
+        </div>
+        <div class="product-banner__image">
+          {% if banner_image[forloop.index0] != blank %}
+            <img src="{{ banner_image[forloop.index0][0].src }}" alt="" loading="lazy">
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="products-list">
+  <div class="container">
+    <div class="products-list__header">
+      <h4 class="heading-text heading-4">{{ section.settings.suggestion_text }}</h4>
+    </div>
+    <div class="products-list__content products-list__content--small">
+      {% for block in section.blocks %}
+        {% assign item = all_products[block.settings.product] %}
+        <div class="products-list__item card">
+          <div class="card__header card__header--small">
+            <ul class="card__tag-list">
+              {% for tag in item.tags %}
+                <li class="card__tag card__tag--{{ tag | downcase | split: ' ' | join: '-' }}">
+                  {{ tag | capitalize }}
+                </li>
+              {% endfor %}
+            </ul>
+            {% # theme-check-disable %}
+            <img
+              src="{{ item.images[0] | image_url: width: 600 }}"
+              loading="lazy"
+              alt=""
+              data-aspectratio="{{ item.aspect_ratio }}"
+              data-sizes="auto"
+              data-parent-fit="cover"
+              alt="{{ product.featured_image.alt | escape }}"
+            >
+            {% # theme-check-enable %}
+            <p class="card__unavailable">Sold Out - Get notified when back in stock</p>
+          </div>
+
+          <div class="card__content">
+            <h5 class="heading-text heading-5 card__title">{{ item.title | upcase | link_to: item.url }}</h5>
+            <div class="card__review">
+              {% liquid
+                render 'icon-star'
+                render 'icon-star'
+                render 'icon-star'
+                render 'icon-star'
+                render 'icon-star'
+              %}
+            </div>
+            <div class="card__price">
+              {{ item.price | money }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  swiper = new Swiper('.product-gallery ', {
+    direction: 'vertical',
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>
+<script>
+  const priceTag = document.querySelector('.product-details__price');
+  const varinatsList = document.querySelector('.product-details__variants-list');
+
+  varinatsList.addEventListener('click', function (e) {
+    const target = e.target.closest('.product-details__variants-item');
+    if (!target) return;
+    badgeContainer(target.dataset.price);
+  });
+  const badgeContainer = (price) => {
+    const opt = {
+      style: 'currency',
+      currency: 'USD',
+    };
+    priceTag.innerText = new Intl.NumberFormat('en-US', opt).format(price / 100);
+  };
+</script>
+{% schema %}
+{
+  "name": "Product Description",
+  "blocks": [
+    {
+      "type": "Featured-Product",
+      "name": "Featured Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Featured Product"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "suggestion_text",
+      "label": "Suggestion Title",
+      "default": "You might also like"
+    },
+    {
+      "type": "text",
+      "id": "add_cart_title",
+      "label": "Add to Cart Button",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "url",
+      "id": "link_cart",
+      "label": "Cart Link"
+    }
+  ]
+}
+{% endschema %}

@@ -1,44 +1,48 @@
 {{ 'style.footer.css' | asset_url | stylesheet_tag }}
 <footer class="footer">
-  {% # theme-check-disable %}
+  <div class="container">
+    <div class="footer__content">
+      {% # theme-check-disable %}
 
-  <img
-    src="{{ section.settings.logo.src | image_url: width: 450 }}"
-    alt="{{ section.settings.logo.alt }}"
-    class="footer__logo"
-    loading="lazy"
-  >
-  {% # theme-check-enable %}
-  <div class="footer__contact">
-    <h5 class="heading-text heading-5">NewsLetter</h5>
-    <div class="footer__email">
-      <input type="email" class="footer__input" placeholder="Enter your email">
-      {% render 'icon-arrowR', fill: 'black' %}
+      <img
+        src="{{ section.settings.logo.src | image_url: width: 450 }}"
+        alt="{{ section.settings.logo.alt }}"
+        class="footer__logo"
+        loading="lazy"
+      >
+      {% # theme-check-enable %}
+      <div class="footer__contact">
+        <h5 class="heading-text heading-5">NewsLetter</h5>
+        <div class="footer__email">
+          <input type="email" class="footer__input" placeholder="Enter your email">
+          {% render 'icon-arrowR', fill: 'black' %}
+        </div>
+        <div class="footer__socials">
+          {% render 'icon-facebook' %}
+          {% render 'icon-instagram' %}
+          {% render 'icon-mail' %}
+        </div>
+      </div>
+      <ul class="footer__list">
+        <h5 class="heading-text heading-5">Again Faster</h5>
+        {% for link in linklists.footer.links %}
+          <li class="footer__item">
+            <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      <ul class="footer__list">
+        <h5 class="heading-text heading-5">Get Help</h5>
+        {% for link in linklists['footer-2'].links %}
+          <li class="footer__item">
+            <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="footer__credits">
+        <p>&copy;2020 Again Faster. All Rights Reserved</p>
+      </div>
     </div>
-    <div class="footer__socials">
-      {% render 'icon-facebook' %}
-      {% render 'icon-instagram' %}
-      {% render 'icon-mail' %}
-    </div>
-  </div>
-  <ul class="footer__list">
-    <h5 class="heading-text heading-5">Again Faster</h5>
-    {% for link in linklists.footer.links %}
-      <li class="footer__item">
-        <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-  <ul class="footer__list">
-    <h5 class="heading-text heading-5">Get Help</h5>
-    {% for link in linklists['footer-2'].links %}
-      <li class="footer__item">
-        <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-  <div class="footer__credits">
-    <p>&copy;2020 Again Faster. All Rights Reserved</p>
   </div>
 </footer>
 
@@ -51,7 +55,6 @@
       "id": "logo",
       "label": "Logo"
     }
-  ],
-  "blocks": []
+  ]
 }
 {% endschema %}
