@@ -17,9 +17,17 @@
   width: 100%;
   text-align: center;
 }
+.btn-primary--light{
+  background-color: var(--color-primary-2);
+  color: var(--color-primary-1);
+}
 .btn-primary:hover {
   background-color: var(--color-primary-2);
   color: var(--color-primary-1);
+}
+.btn-primary--light:hover {
+  background-color: var(--color-primary-1);
+  color: var(--color-primary-2);
 }
 .btn-secondary {
   background-color: transparent;

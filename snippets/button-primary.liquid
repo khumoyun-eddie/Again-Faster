@@ -1,1 +1,6 @@
-<a class="btn btn-primary {{class}}" href="{{ url }}">{{ title }}</a>
+{% case btnType %}
+  {% when 'light' %}
+    <a class="btn btn-primary btn-primary--light {{class}}" href="{{ url }}">{{ title }}</a>
+  {% else %}
+    <a class="btn btn-primary {{class}}" href="{{ url }}">{{ title }}</a>
+{% endcase %}
