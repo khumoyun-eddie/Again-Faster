@@ -1,4 +1,5 @@
 {{ 'style.header.css' | asset_url | stylesheet_tag }}
+
 <header class="header">
   <nav class="navigation">
     <div class="container">
@@ -27,11 +28,22 @@
       <div class="navigation__user">
         {% render 'icon-search' %}
         {% render 'icon-avatar' %}
-        {% render 'icon-cart' %}
+        {% render 'icon-cart', class: 'opener' %}
       </div>
     </div>
   </nav>
 </header>
+{% comment %} {% render 'cart' %} {% endcomment %}
+{% comment %} <script>
+  const cartIcon = document.querySelector('.opener');
+  const cart = document.querySelector('.cart')
+  cartIcon.addEventListener('click', () => {
+    {% comment %} cart.setAttribute('opened',true) {% endcomment %}
+    {% comment %} console.log('clicked')? {% endcomment %}
+
+    console.log(cart)
+  });
+</script>  {% endcomment %}
 
 {% schema %}
 {

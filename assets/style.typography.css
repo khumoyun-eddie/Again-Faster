@@ -34,6 +34,9 @@
   font-weight: 600;
   letter-spacing: 0.08em;
 }
+.heading-4--regular{
+  font-weight: 400;
+}
 .heading-4--light {
   color: var(--color-primary-2);
 }

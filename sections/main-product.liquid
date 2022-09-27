@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="swiper-pagination"></div>
-      <div class="product-details">
+      <form class="product-details">
         <h4 class="heading-text heading-4">{{ product.title }}</h4>
 
         <p class="product-details__price">{{ product.price | money }}</p>
@@ -50,6 +50,8 @@
         </div>
         <div class="product-details__description">{{ product.description }}</div>
         <div class="product-details__variants-list">
+         {% unless product.variants[0].title == 'Default Title' %}
+          
           {% for variant in product.variants %}
             {% assign price = variant.price %}
             {% assign quantity = variant.inventory_quantity %}
@@ -57,24 +59,30 @@
               type="radio"
               name="variant"
               id="{{ variant.id }}"
+              class = "product-details__variants-item-input"
+              value="{{ variant.id }}"
+              {% if variant == product.selected_or_first_available_variant %}checked{% endif %}
               {% if quantity <= 0 %}
                 disabled
               {% endif %}
             >
-            <label
-              for="{{ variant.id }}"
-              data-price="{{ price }}"
-              class="product-details__variants-item{% if quantity <= 0 %} disabled {% endif %}"
-            >
-              {{ variant.title }}
-            </label>
-          {% endfor %}
+              <label
+                for="{{ variant.id }}"
+                data-price="{{ price }}"
+                data-id="{{ variant.id }}"
+                class="product-details__variants-item{% if quantity <= 0 %} disabled {% endif %}"
+                >
+                  {{ variant.title }}
+                </label>
+              {% endfor %}
+            {% endunless %}
         </div>
         <p class="product-details__services">Available for Free shipping!</p>
         {%
           render 'button-primary',
           url: {{section.settings.link_cart}},
-          title: {{section.settings.add_cart_title}}
+          title: {{section.settings.add_cart_title}},
+          class: 'product-details__add-cart'
         %}
         <div class="product-details__frequent">
           {% assign selected_handles = product.metafields.accentuate.frequently_bought | split: '|' %}
@@ -196,11 +204,13 @@
 <script>
   const priceTag = document.querySelector('.product-details__price');
   const varinatsList = document.querySelector('.product-details__variants-list');
-
+  let variantId = "{{ product.id }}";
   varinatsList.addEventListener('click', function (e) {
     const target = e.target.closest('.product-details__variants-item');
     if (!target) return;
     badgeContainer(target.dataset.price);
+    variantId = target.dataset.id;
+    {% comment %} console.log(variantId) {% endcomment %}
   });
   const badgeContainer = (price) => {
     const opt = {

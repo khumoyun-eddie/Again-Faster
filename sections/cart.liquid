@@ -1,0 +1,57 @@
+{{ 'style.cart.css' | asset_url | stylesheet_tag }}
+
+<form action="" class="side-cart">
+  <div class="side-cart__header">
+    <h4 class="heading-text heading-4 heading-4--regular">{{ section.settings.title }}</h4>
+    <span class="side-cart__close">
+      {% render 'icon-close' %}
+    </span>
+  </div>
+  {% if cart.item_count > 0 %}
+    <div class="side-cart__products-list"></div>
+  {% else %}
+    <div class="side-cart__products-list--empty">Your Cart is Empty</div>
+  {% endif %}
+  <div class="side-cart__footer">
+    <div class="side-cart__subtotal">
+      <p class="side-cart__subtotal-title">Subtotal</p>
+      <p class="side-cart__total-price"></p>
+    </div>
+    <p class="side-cart__text">Tax and shipping calculates at checkout.</p>
+    <div class="side-cart__services">
+      {% render 'icon-affirm' %}
+      <p>pay as low as 56/mo Learn More</p>
+    </div>
+    {%
+      render 'button-primary',
+      url: {{section.settings.link_cart}},
+      title: {{section.settings.add_cart_title}},
+      class: 'side-cart__add-cart'
+    %}
+  </div>
+</form>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cart Title",
+      "default": "My Cart"
+    },
+    {
+      "type": "text",
+      "id": "add_cart_title",
+      "label": "Add to Cart Button",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "url",
+      "id": "link_cart",
+      "label": "Cart Link"
+    }
+  ]
+}
+{% endschema %}
