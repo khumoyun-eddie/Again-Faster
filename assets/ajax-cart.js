@@ -40,6 +40,7 @@ class Cart {
   async updateCart() {
     const cartDetails = await this.getCartDetails();
     this.renderCartItems(cartDetails);
+    this.addCartItemCount()
   }
 
   closeModal() {
@@ -49,7 +50,6 @@ class Cart {
   }
 
   renderCartItems(cartDetails) {
-    console.log(cartDetails)
     if(cartDetails.item_count !== 0){
       document.querySelector('.side-cart__full').style.display = 'block'
       document.querySelector('.side-cart__empty').style.display= 'none'
@@ -62,6 +62,7 @@ class Cart {
     
     cartItemsWrapper.innerHTML = "";
     // if(cartDetails.length === 0) return
+   
     for (let item of cartDetails.items) {
       const template = `
       <div class="side-cart__product item" data-id="${item.id}" data-amount="${item.quantity}" >
@@ -74,7 +75,7 @@ class Cart {
           <p class="item__price">${this.formatter.format(item.price / 100)}</p>
         </div>
         <div class="details-wrapper">
-          <p class="item__variant-type">${item.variant_title}</p>
+          <p class="item__variant-type">${item.variant_title || ''}</p>
        
            <img data-operator="remove" class="item__remove item__control" src="https://cdn.shopify.com/s/files/1/0601/7853/0436/files/icon-remove.svg?v=1664203933" alt="" />
         
@@ -106,13 +107,21 @@ class Cart {
     document.body.setAttribute("style", "overflow: hidden");
   }
 
-  addToCart() {
-    const variantId = document.querySelector(".product-details__variants-item-input:checked");
-    console.log(variantId);
+  addToCart(e) {
+   let productID
+   console.log(e.target.dataset.novariant)
+    if(e.target.dataset.novariant == 'true'){
+      const span  = document.querySelector('.product-details__noVariant')
+      productID = span.dataset.id
+    }else{
+      const variantId = document.querySelector(".product-details__variants-item-input:checked");
+      productID = variantId.value
+
+    }
     const formData = {
       items: [
         {
-          id: variantId.value,
+          id: productID,
           quantity: 1,
         },
       ],
@@ -123,10 +132,9 @@ class Cart {
 
   addCartItemCount() {
     this.getCartDetails().then((cartDetails) => {
-      const headerCartLinks = document.querySelectorAll(".header-cart-link");
-      headerCartLinks.forEach((link) => {
-        link.innerHTML += " (" + cartDetails.item_count + ")";
-      });
+      const headerCartLinks = document.querySelectorAll(".cart-item");
+      headerCartLinks.textContent = cartDetails.item_count;
+      console.log(headerCartLinks.textContent)
     });
   }
   
@@ -163,17 +171,17 @@ class Cart {
 const sideCart = new Cart();
 const openCartIcon = document.querySelector(".opener");
 const closeIcon = document.querySelector(".side-cart__close");
-const addToCartBtn = document.querySelector(".product-details__add-cart");
-
+const form = document.querySelector(".product-details__form");
+sideCart.addCartItemCount()
 openCartIcon.addEventListener("click", () => {
   sideCart.toggleCart();
 });
 closeIcon.addEventListener("click", () => {
   sideCart.closeModal();
 });
-addToCartBtn.addEventListener("click", function (e) {
+form?.addEventListener("submit", function (e) {
   e.preventDefault();
-  sideCart.addToCart();
+  sideCart.addToCart(e);
 });
 
 const itemWrapper = document.querySelector(".side-cart__products-list");
@@ -182,7 +190,7 @@ itemWrapper?.addEventListener("click", function (e) {
   if(!target) return
   const operator = target.dataset.operator
   const cartItem = target.closest('.item')
-  console.log(cartItem)
+  
 
   if(operator === 'plus') {
     sideCart.increaseItemAmount({itemID:cartItem.dataset.id, itemAmount: cartItem.dataset.amount})
@@ -194,3 +202,21 @@ itemWrapper?.addEventListener("click", function (e) {
     sideCart.deleteItem({itemID:cartItem.dataset.id})
   }
 });
+
+const cartBtns =  document.querySelectorAll('.product__details--link')
+for(let i = 0; i < cartBtns.length; i++) {
+    const addToCartBtn2 = cartBtns[i]
+    addToCartBtn2.addEventListener('click',function(e){
+        e.preventDefault()
+        const variantId = addToCartBtn2.dataset.id
+        console.log(variantId, 'fq')
+            const formData = {
+                items: [{
+                    id: variantId,
+                    quantity: 1
+                }]
+            }
+    
+            sideCart.addItem(formData).then(() => sideCart.toggleCart());
+    })
+}

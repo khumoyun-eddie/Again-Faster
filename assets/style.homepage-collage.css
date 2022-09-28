@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 60% 40%;
   column-gap: 6rem;
-  padding:4rem 8.6rem 12rem 0;
+  padding: 4rem 8.6rem 12rem 0;
 }
 .main-block {
   grid-column: 1/2;
@@ -16,4 +16,17 @@
 }
 .second-block__img-box img {
   width: 100%;
+}
+
+.second-block h5 {
+  margin-top: 4rem;
+  margin-bottom: 8px;
+}
+.second-block__text {
+  margin-top: 1.6rem;
+  margin-bottom: 4rem;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 167.5%;
+  color: #8f8f8f;
 }

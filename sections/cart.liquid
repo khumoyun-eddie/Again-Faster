@@ -1,13 +1,13 @@
 {{ 'style.cart.css' | asset_url | stylesheet_tag }}
 
 <form action="" class="side-cart">
+  <div class="side-cart__header">
+    <h4 class="heading-text heading-4 heading-4--regular">{{ section.settings.title }}</h4>
+    <span class="side-cart__close">
+      {% render 'icon-close' %}
+    </span>
+  </div>
   <div class="side-cart__full">
-    <div class="side-cart__header">
-      <h4 class="heading-text heading-4 heading-4--regular">{{ section.settings.title }}</h4>
-      <span class="side-cart__close">
-        {% render 'icon-close' %}
-      </span>
-    </div>
     <div class="side-cart__products-list"></div>
 
     <div class="side-cart__footer">
@@ -28,7 +28,15 @@
       %}
     </div>
   </div>
-  <div class="side-cart__empty">Empty</div>
+  <div class="side-cart__empty">
+    <p class="empty-title">Your Cart is Empty</p>
+    {%
+      render 'button-primary',
+      url: {{section.settings.link_best_sellers}},
+      title: {{section.settings.btn_sellers}},
+      btnType: 'light'
+    %}
+  </div>
 </form>
 <div class="overlay"></div>
 {% schema %}

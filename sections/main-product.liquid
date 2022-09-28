@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="swiper-pagination"></div>
-      <form class="product-details">
+      <div class="product-details">
         <h4 class="heading-text heading-4">{{ product.title }}</h4>
 
         <p class="product-details__price">{{ product.price | money }}</p>
@@ -49,42 +49,52 @@
           <p>pay as low as 56/mo Learn More</p>
         </div>
         <div class="product-details__description">{{ product.description }}</div>
-        <div class="product-details__variants-list">
-         {% unless product.variants[0].title == 'Default Title' %}
-          
-          {% for variant in product.variants %}
-            {% assign price = variant.price %}
-            {% assign quantity = variant.inventory_quantity %}
-            <input
-              type="radio"
-              name="variant"
-              id="{{ variant.id }}"
-              class = "product-details__variants-item-input"
-              value="{{ variant.id }}"
-              {% if variant == product.selected_or_first_available_variant %}checked{% endif %}
-              {% if quantity <= 0 %}
-                disabled
-              {% endif %}
-            >
-              <label
-                for="{{ variant.id }}"
-                data-price="{{ price }}"
-                data-id="{{ variant.id }}"
-                class="product-details__variants-item{% if quantity <= 0 %} disabled {% endif %}"
+        <form
+          action=""
+          data-noVariant="{{ product.has_only_default_variant }}"
+          data-id="{{  }}"
+          class="product-details__form"
+        >
+          <div class="product-details__variants-list">
+            {% unless product.variants[0].title == 'Default Title' %}
+              {% for variant in product.variants %}
+                {% assign price = variant.price %}
+                {% assign quantity = variant.inventory_quantity %}
+                <input
+                  type="radio"
+                  name="variant"
+                  id="{{ variant.id }}"
+                  class="product-details__variants-item-input"
+                  value="{{ variant.id }}"
+                  {% if variant == product.selected_or_first_available_variant %}
+                    checked
+                  {% endif %}
+                  {% if quantity <= 0 %}
+                    disabled
+                  {% endif %}
+                >
+                <label
+                  for="{{ variant.id }}"
+                  data-price="{{ price }}"
+                  data-id="{{ variant.id }}"
+                  class="product-details__variants-item{% if quantity <= 0 %} disabled {% endif %}"
                 >
                   {{ variant.title }}
                 </label>
               {% endfor %}
+            {% else %}
+              <span
+                class="product-details__noVariant"
+                data-id="{{ product.variants[0].id }}"
+                >This product has no variants</span
+              >
             {% endunless %}
-        </div>
-        <p class="product-details__services">Available for Free shipping!</p>
-        {%
-          render 'button-primary',
-          url: {{section.settings.link_cart}},
-          title: {{section.settings.add_cart_title}},
-          class: 'product-details__add-cart'
-        %}
+          </div>
+          <p class="product-details__services">Available for Free shipping!</p>
+          <button type="submit" class="btn btn-primary product-details__add-cart">Add to Cart</button>
+        </form>
         <div class="product-details__frequent">
+          <p class="product-details__frequent-title">Frequently bought with</p>
           {% assign selected_handles = product.metafields.accentuate.frequently_bought | split: '|' %}
           {% for product in selected_handles %}
             <div class="product-details__product">
@@ -105,7 +115,13 @@
               </div>
               <div class="product__details">
                 <p class="p product__details--text">{{ all_products[product].title }}</p>
-                <a href="#" class="p product__details--text">Add to Cart</a>
+                <button
+                  type="button"
+                  data-id="{{ all_products[product].selected_or_first_available_variant.id }}"
+                  class="p product__details--link"
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           {% endfor %}
@@ -140,7 +156,7 @@
 </div>
 <div class="products-list">
   <div class="container">
-    <div class="products-list__header">
+    <div class="products-list__header products-list__header--2">
       <h4 class="heading-text heading-4">{{ section.settings.suggestion_text }}</h4>
     </div>
     <div class="products-list__content products-list__content--small">

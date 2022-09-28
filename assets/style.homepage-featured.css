@@ -1,29 +1,37 @@
-.homepage-featured-products{
-    padding: 9.7rem 4rem;
+.homepage-featured-products {
+  padding: 9.7rem 4rem;
 }
-.homepage-featured-products__list{
-    
+.homepage-featured-products__list {
 }
-.homepage-featured-products__list .swiper-slide{
-    /* width: 25%; */
-    cursor: pointer;
+.homepage-featured-products__list .swiper-slide {
+  /* width: 25%; */
+  cursor: pointer;
+  text-align: center;
 }
-.homepage-featured-products__list-card{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+.homepage-featured-products__list-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.homepage-featured-products__list-card a {
+  text-decoration: none;
+  letter-spacing: 0.16em;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 168%;
+  font-family: var(--secondary-font);
+  color: var(--color-primary-1);
 }
 
-.homepage-featured-products__list-card svg{
-    transition: all .2s ;
-    margin-left: 1rem;
-    display: none;
+.homepage-featured-products__list-card svg {
+  transition: all 0.2s;
+  margin-left: 1rem;
+  display: none;
 }
-.homepage-featured-products__list .swiper-slide:hover .homepage-featured-products__list-card svg{
-    display: block;
+.homepage-featured-products__list .swiper-slide:hover .homepage-featured-products__list-card svg {
+  display: block;
 }
-.homepage-featured-products__list .swiper-scrollbar{
-    position: relative;
-    margin-top: 4rem;
+.homepage-featured-products__list .swiper-scrollbar {
+  position: relative;
+  margin-top: 4rem;
 }
