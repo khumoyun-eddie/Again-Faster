@@ -1,0 +1,9 @@
+.form-register, .form-notice{
+  margin-bottom: 2rem;
+}
+.full-name{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  column-gap: 2rem;
+}

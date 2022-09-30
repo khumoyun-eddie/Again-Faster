@@ -40,7 +40,7 @@ class Cart {
   async updateCart() {
     const cartDetails = await this.getCartDetails();
     this.renderCartItems(cartDetails);
-    this.addCartItemCount()
+    // this.addCartItemCount()
   }
 
   closeModal() {
@@ -95,8 +95,9 @@ class Cart {
     const sideCartTotalPrice = document.querySelector(".side-cart__total-price");
     sideCartTotalPrice.textContent = this.formatter.format(cartDetails.total_price / 100);
 
-    // const sideCartItemCart = document.querySelector(".side-cart__item-cart");
-    // sideCartItemCart.textContent = '(' + cartDetails.item_count + ')'
+    // const headerCartLinks = document.querySelectorAll(".cart-item");
+    // headerCartLinks.textContent = cartDetails.item_count;
+    // console.log(headerCartLinks.textContent)
   }
 
   async toggleCart() {
@@ -132,9 +133,9 @@ class Cart {
 
   addCartItemCount() {
     this.getCartDetails().then((cartDetails) => {
-      const headerCartLinks = document.querySelectorAll(".cart-item");
-      headerCartLinks.textContent = cartDetails.item_count;
-      console.log(headerCartLinks.textContent)
+      // const headerCartLinks = document.querySelectorAll(".cart-item");
+      // headerCartLinks.textContent = cartDetails.item_count;
+      // console.log(headerCartLinks.textContent)
     });
   }
   
@@ -172,7 +173,7 @@ const sideCart = new Cart();
 const openCartIcon = document.querySelector(".opener");
 const closeIcon = document.querySelector(".side-cart__close");
 const form = document.querySelector(".product-details__form");
-sideCart.addCartItemCount()
+// sideCart.addCartItemCount()
 openCartIcon.addEventListener("click", () => {
   sideCart.toggleCart();
 });

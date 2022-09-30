@@ -62,8 +62,12 @@
     padding: 8px;
     width: 1.8rem;
     height: 1.8rem;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     text-align: center;
+}
+.icon-account{
+    text-decoration: none;
+    
 }

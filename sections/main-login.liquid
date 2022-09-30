@@ -1,0 +1,78 @@
+{{ 'style.main-login.css' | asset_url | stylesheet_tag }}
+
+<div class="main-login">
+  <div class="container">
+    <div class="form-login form">
+      <div class="form__header">
+        <h4 class="heading-text heading-4 heading-4--regular">Log in</h4>
+      </div>
+      {% form 'customer_login' %}
+        {{ form.errors | default_errors }}
+
+        <div class="input-group">
+          <input type="email" name="customer[email]" placeholder="Email">
+          <label for="email">Email</label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" name="customer[password]" placeholder="Password">
+          <label for="password">Password</label>
+          <a href="" class="forgot-password">Forgot Password?</a>
+        </div>
+        <div class="submit">
+          <input class="btn btn-primary" type="submit" value="Log In">
+        </div>
+        <p class="form-notice">Don't have an account yet?</p>
+        <a href="/account/register" class="btn btn-primary btn-primary--light">Create an Account</a>
+      {% endform %}
+    </div>
+    <div class="form-reset form">
+      <div class="form__header">
+        <h4 class="heading-text heading-4 heading-4--regular">Reset Password</h4>
+        <p class="form__text">Enter your email below to receive an email to reset your password.</p>
+      </div>
+      {% form 'recover_customer_password' %}
+        {{ form.errors | default_errors }}
+
+        <div class="input-group">
+          <input type="email" name="customer[email]" placeholder="Email">
+          <label for="email">Email</label>
+        </div>
+
+        <div class="submit">
+          <input class="btn btn-primary" type="submit" value="Reset Password">
+        </div>
+        <p class="form__redirect">or <a class="cancel-reset">Cancel</a></p>
+      {% endform %}
+    </div>
+  </div>
+</div>
+
+<script>
+  let login = document.querySelector('.form-login');
+  let resetPassword = document.querySelector('.form-reset');
+
+  resetPassword.style.display = 'none';
+
+  function hideLoginForm() {
+    login.style.display = 'none';
+    resetPassword.style.display = 'block';
+  }
+
+  function showLoginForm() {
+    login.style.display = 'block';
+    resetPassword.style.display = 'none';
+  }
+
+  let forgotPassword = document.querySelector('.forgot-password');
+  let cancelReset = document.querySelector('.cancel-reset');
+  forgotPassword.addEventListener('click', (e) => {
+    e.preventDefault();
+    hideLoginForm();
+  });
+  cancelReset.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    showLoginForm();
+  });
+</script>

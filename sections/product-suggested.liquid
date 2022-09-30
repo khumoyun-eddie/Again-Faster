@@ -1,0 +1,65 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+>
+{{ 'style.products-list.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'style.product-card.css' | asset_url | stylesheet_tag }} {% endcomment %}
+{{ 'style.product-suggested.css' | asset_url | stylesheet_tag }}
+<div class="container">
+  <h3 class="heading-text heading-3">You might also like</h3>
+  <div id="product" class="swiper products-suggested">
+    <div class="swiper-wrapper">
+      {% assign selected_handles = product.metafields.accentuate.suggested_products | split: '|' %}
+      {% for block in selected_handles %}
+        {% assign item = all_products[block] %}
+        <div class="swiper-slide card">
+          <div class="card__header">
+            <ul class="card__tag-list">
+              {% for tag in item.tags %}
+                <li class="card__tag card__tag--{{ tag | downcase | split: ' ' | join: '-' }}">
+                  {{ tag | capitalize }}
+                </li>
+              {% endfor %}
+            </ul>
+            {% # theme-check-disable %}
+            <img
+              src="{{ item.images[0] | image_url: width: 600 }}"
+              loading="lazy"
+              alt=""
+              data-aspectratio="{{ item.aspect_ratio }}"
+              data-sizes="auto"
+              data-parent-fit="cover"
+              alt="{{ product.featured_image.alt | escape }}"
+            >
+            {% # theme-check-enable %}
+          </div>
+          <div class="card__content">
+            <h5 class="heading-text heading-5 card__title">{{ item.title | upcase | link_to: item.url }}</h5>
+            <div class="card__review">
+              {% liquid
+                render 'icon-star'
+                render 'icon-star'
+                render 'icon-star'
+                render 'icon-star'
+                render 'icon-star'
+              %}
+            </div>
+            <div class="card__price">
+              {{ item.price | money }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  swiper = new Swiper('.products-suggested ', {
+    slidesPerView: 4,
+    spaceBetween: 30,
+  });
+</script>

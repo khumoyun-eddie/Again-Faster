@@ -1,0 +1,48 @@
+{{ 'style.main-register.css' | asset_url | stylesheet_tag }}
+{{ 'style.main-login.css' | asset_url | stylesheet_tag }}
+
+<div class="main-register">
+  <div class="container">
+    <div class="form-register form">
+      <div class="form__header">
+        <h4 class="heading-text heading-4 heading-4--regular">Create an account</h4>
+      </div>
+      {% form 'create_customer', return_to: routes.all_products_collection_url %}
+        {{ form.errors | default_errors }}
+        <div class="full-name">
+          <div class="input-group">
+            <input type="text" autocapitalize="on" name="customer[first_name]" placeholder="First name">
+            <label for="first-name">First name</label>
+          </div>
+
+          <div class="input-group">
+            <input
+              type="text"
+              autocomplete="email"
+              autocorrect="off"
+              autocapitalize="off"
+              name="customer[last_name]"
+              placeholder="Last name"
+            >
+            <label for="last-name">Last name</label>
+          </div>
+        </div>
+        <div class="input-group">
+          <input type="email" name="customer[email]" placeholder="Email">
+          <label for="email">Email</label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" name="customer[password]" placeholder="Password">
+          <label for="password">Password</label>
+        </div>
+
+        <div class="submit">
+          <input class="btn btn-primary" type="submit" value="Create">
+        </div>
+        <p class="form-notice">Already have an account?</p>
+        <a href="/account/login" class="btn btn-primary btn-primary--light">log in</a>
+      {% endform %}
+    </div>
+  </div>
+</div>

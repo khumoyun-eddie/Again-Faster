@@ -36,9 +36,17 @@
         ],
         "settings": {
         }
+      },
+      "product-banner":{
+        "type": "product-banner"
+      },
+      "product-suggested":{
+        "type": "product-suggested"
       }
     },
     "order": [
-      "product"
+      "product",
+      "product-banner",
+      "product-suggested"
     ]
   }

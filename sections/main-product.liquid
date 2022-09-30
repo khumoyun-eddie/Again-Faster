@@ -130,81 +130,59 @@
     </div>
   </div>
 </div>
-<div class="product-banner">
-  <span class="line line--1"></span>
-  <span class="line line--2"></span>
-  <span class="line line--3"></span>
-  <div class="container">
-    {% assign banner_markup = product.metafields.accentuate.banner_markup %}
-    {% assign banner_image = product.metafields.accentuate.banner_image %}
-
-    {% for item in (1..banner_markup.size) %}
-      <div class="product-banner__wrapper">
-        <div class="product-banner__content">
-          {% if banner_markup[forloop.index0] != blank %}
-            {{ banner_markup[forloop.index0] }}
-          {% endif %}
-        </div>
-        <div class="product-banner__image">
-          {% if banner_image[forloop.index0] != blank %}
-            <img src="{{ banner_image[forloop.index0][0].src }}" alt="" loading="lazy">
-          {% endif %}
-        </div>
+{% comment %}
+   <div class="products-list">
+    <div class="container">
+      <div class="products-list__header products-list__header--2">
+        <h4 class="heading-text heading-4">{{ section.settings.suggestion_text }}</h4>
       </div>
-    {% endfor %}
-  </div>
-</div>
-<div class="products-list">
-  <div class="container">
-    <div class="products-list__header products-list__header--2">
-      <h4 class="heading-text heading-4">{{ section.settings.suggestion_text }}</h4>
-    </div>
-    <div class="products-list__content products-list__content--small">
-      {% for block in section.blocks %}
-        {% assign item = all_products[block.settings.product] %}
-        <div class="products-list__item card">
-          <div class="card__header card__header--small">
-            <ul class="card__tag-list">
-              {% for tag in item.tags %}
-                <li class="card__tag card__tag--{{ tag | downcase | split: ' ' | join: '-' }}">
-                  {{ tag | capitalize }}
-                </li>
-              {% endfor %}
-            </ul>
-            {% # theme-check-disable %}
-            <img
-              src="{{ item.images[0] | image_url: width: 600 }}"
-              loading="lazy"
-              alt=""
-              data-aspectratio="{{ item.aspect_ratio }}"
-              data-sizes="auto"
-              data-parent-fit="cover"
-              alt="{{ product.featured_image.alt | escape }}"
-            >
-            {% # theme-check-enable %}
-            <p class="card__unavailable">Sold Out - Get notified when back in stock</p>
-          </div>
+      <div class="products-list__content products-list__content--small">
+        {% for block in section.blocks %}
+          {% assign item = all_products[block.settings.product] %}
+          <div class="products-list__item card">
+            <div class="card__header card__header--small">
+              <ul class="card__tag-list">
+                {% for tag in item.tags %}
+                  <li class="card__tag card__tag--{{ tag | downcase | split: ' ' | join: '-' }}">
+                    {{ tag | capitalize }}
+                  </li>
+                {% endfor %}
+              </ul>
+              {% # theme-check-disable %}
+              <img
+                src="{{ item.images[0] | image_url: width: 600 }}"
+                loading="lazy"
+                alt=""
+                data-aspectratio="{{ item.aspect_ratio }}"
+                data-sizes="auto"
+                data-parent-fit="cover"
+                alt="{{ product.featured_image.alt | escape }}"
+              >
+              {% # theme-check-enable %}
+              <p class="card__unavailable">Sold Out - Get notified when back in stock</p>
+            </div>
 
-          <div class="card__content">
-            <h5 class="heading-text heading-5 card__title">{{ item.title | upcase | link_to: item.url }}</h5>
-            <div class="card__review">
-              {% liquid
-                render 'icon-star'
-                render 'icon-star'
-                render 'icon-star'
-                render 'icon-star'
-                render 'icon-star'
-              %}
-            </div>
-            <div class="card__price">
-              {{ item.price | money }}
+            <div class="card__content">
+              <h5 class="heading-text heading-5 card__title">{{ item.title | upcase | link_to: item.url }}</h5>
+              <div class="card__review">
+                {% liquid
+                  render 'icon-star'
+                  render 'icon-star'
+                  render 'icon-star'
+                  render 'icon-star'
+                  render 'icon-star'
+                %}
+              </div>
+              <div class="card__price">
+                {{ item.price | money }}
+              </div>
             </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
   </div>
-</div>
+{% endcomment %}
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 

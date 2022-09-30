@@ -1,0 +1,26 @@
+{{ 'style.product-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="product-banner">
+  <span class="line line--1"></span>
+  <span class="line line--2"></span>
+  <span class="line line--3"></span>
+  <div class="container">
+    {% assign banner_markup = product.metafields.accentuate.banner_markup %}
+    {% assign banner_image = product.metafields.accentuate.banner_image %}
+
+    {% for item in (1..banner_markup.size) %}
+      <div class="product-banner__wrapper">
+        <div class="product-banner__content">
+          {% if banner_markup[forloop.index0] != blank %}
+            {{ banner_markup[forloop.index0] }}
+          {% endif %}
+        </div>
+        <div class="product-banner__image">
+          {% if banner_image[forloop.index0] != blank %}
+            <img src="{{ banner_image[forloop.index0][0].src }}" alt="" loading="lazy">
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

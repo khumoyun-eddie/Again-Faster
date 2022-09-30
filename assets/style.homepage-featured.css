@@ -1,8 +1,7 @@
 .homepage-featured-products {
   padding: 9.7rem 4rem;
 }
-.homepage-featured-products__list {
-}
+
 .homepage-featured-products__list .swiper-slide {
   /* width: 25%; */
   cursor: pointer;
@@ -28,7 +27,13 @@
   margin-left: 1rem;
   display: none;
 }
-.homepage-featured-products__list .swiper-slide:hover .homepage-featured-products__list-card svg {
+.homepage-featured-products__list  .swiper-slide img {
+  transition: all 0.3s;
+}
+.homepage-featured-products__list .swiper-slide:hover img {
+  transform: scale(1.03);
+}
+.homepage-featured-products__list .swiper-slide:hover svg {
   display: block;
 }
 .homepage-featured-products__list .swiper-scrollbar {
