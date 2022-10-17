@@ -2,38 +2,7 @@
     "sections": {
       "product": {
         "type": "main-product",
-        "blocks": {
-          "fe836604-5f6c-42a4-8a58-6108d70f8e59": {
-            "type": "Featured-Product",
-            "settings": {
-              "product": "abs-chair"
-            }
-          },
-          "918d4172-a1d8-42bd-8b12-d846e0790ffb": {
-            "type": "Featured-Product",
-            "settings": {
-              "product": "medicine-balls"
-            }
-          },
-          "64df8bc3-0836-42d5-b040-9268a143172c": {
-            "type": "Featured-Product",
-            "settings": {
-              "product": "rope"
-            }
-          },
-          "6e0712a1-f6f7-4442-88de-a4e270096f17": {
-            "type": "Featured-Product",
-            "settings": {
-              "product": "gdc"
-            }
-          }
-        },
-        "block_order": [
-          "fe836604-5f6c-42a4-8a58-6108d70f8e59",
-          "918d4172-a1d8-42bd-8b12-d846e0790ffb",
-          "64df8bc3-0836-42d5-b040-9268a143172c",
-          "6e0712a1-f6f7-4442-88de-a4e270096f17"
-        ],
+       
         "settings": {
         }
       },

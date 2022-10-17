@@ -27,23 +27,17 @@
       </ul>
       <div class="navigation__user">
         {% render 'icon-search' %}
-        {% render 'icon-avatar', url: {{customer}} %}
+        <a
+          class="icon-account"
+          href="{% if customer %}{{ "/account" }}{% else %}{{ "/account/login" }}{% endif %}"
+        >
+          {% render 'icon-avatar' %}
+        </a>
         {% render 'icon-cart' %}
       </div>
     </div>
   </nav>
 </header>
-{% comment %} {% render 'cart' %} {% endcomment %}
-{% comment %} <script>
-  const cartIcon = document.querySelector('.opener');
-  const cart = document.querySelector('.cart')
-  cartIcon.addEventListener('click', () => {
-    {% comment %} cart.setAttribute('opened',true) {% endcomment %}
-    {% comment %} console.log('clicked')? {% endcomment %}
-
-    console.log(cart)
-  });
-</script>  {% endcomment %}
 
 {% schema %}
 {

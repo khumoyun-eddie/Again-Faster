@@ -34,3 +34,6 @@ body {
   max-width: 144rem;
   margin: 0 auto;
 }
+main{
+  padding-top: 4rem;
+}

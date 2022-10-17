@@ -1,6 +1,6 @@
 {{ 'style.cart.css' | asset_url | stylesheet_tag }}
 
-<form action="" class="side-cart">
+<form action="{{ routes.cart_url }}" method="post" class="side-cart">
   <div class="side-cart__header">
     <h4 class="heading-text heading-4 heading-4--regular">{{ section.settings.title }}</h4>
     <span class="side-cart__close">
@@ -20,12 +20,7 @@
         {% render 'icon-affirm' %}
         <p>pay as low as 56/mo Learn More</p>
       </div>
-      {%
-        render 'button-primary',
-        url: {{section.settings.link_checkout}},
-        title: {{section.settings.add_cart_title}},
-        class: 'side-cart__add-cart'
-      %}
+      <input type="submit" class="btn btn-primary side-cart__add-cart" name="checkout" value="Continue to Checkout">
     </div>
   </div>
   <div class="side-cart__empty">

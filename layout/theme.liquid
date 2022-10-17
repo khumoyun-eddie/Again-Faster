@@ -14,8 +14,10 @@
     {{ 'style.base.css' | asset_url | stylesheet_tag }}
     {{ 'style.typography.css' | asset_url | stylesheet_tag }}
     {{ 'style.buttons.css' | asset_url | stylesheet_tag }}
+    {{ 'style.reviews-yotpo.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'lazisizes.min.js' | asset_url }}" defer></script>
     <script src="{{ 'ajax-cart.js' | asset_url }}" defer></script>
+
     {% comment %} <script src="{{ 'side-cart.js' | asset_url }}" defer></script> {% endcomment %}
   </head>
   <body class="{% if template == "index" %}home{% endif %}">

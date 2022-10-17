@@ -3,7 +3,7 @@
   grid-template-columns: 40% 45%;
   gap: 0 12%;
   justify-content: center;
-  padding: 8rem 4rem 4rem 4rem;
+  padding: 5rem 4rem 4rem 4rem;
   /* height: calc(100vh - 12rem); */
 }
 .collection-hero__content {

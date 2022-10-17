@@ -6,24 +6,22 @@
   position: relative;
   display: flex;
   align-items: flex-end;
+  transform: translateY(-4rem);
+  padding-bottom: 4rem;
 
-  padding: 4rem;
-  padding-left: 22rem;
-}
-.homepage-hero .container {
-  margin: 0;
 }
 .homepage-hero__content {
   width: 100%;
+  padding-left: 4rem;
 }
-.homepage-hero__content h1 {
-  width: 50%;
+.homepage-hero__content .container h1 {
+  width: 40%;
 }
 .homepage-hero__text {
   color: var(--color-primary-2);
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 167.5%;
-  width: 70%;
+  width: 38%;
   margin-bottom: 4rem;
 }

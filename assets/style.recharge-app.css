@@ -1,0 +1,16 @@
+.recharge-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+.recharge-form{
+    width: 45%;
+    background-color: aquamarine;
+    border-radius: 1rem;
+    padding: 1rem .8rem;
+}
+.recharge-label{
+    cursor: pointer;
+}
+.recharge-options-list{
+    display: none;
+}

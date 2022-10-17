@@ -1,0 +1,65 @@
+.account {
+  display: grid;
+  grid-template-columns: 36.8rem 1fr;
+  height: calc(100vh - 8rem);
+}
+.account__sidebar {
+  background-color: var(--color-secondary-4);
+  display: flex;
+  flex-direction: column;
+  padding: 8.5rem 0 4rem 3.4rem;
+}
+.account__content {
+  padding: 8.5rem 0rem 4rem 12rem;
+}
+.account__address-book{
+    margin-top: 4rem;
+}
+.account__sidebar h4 {
+  margin-bottom: 4rem;
+}
+.account__link {
+  text-decoration: none;
+  color: var(--color-primary-1);
+}
+.account__link:not(:last-of-type) {
+  margin-bottom: 1.6rem;
+}
+
+.account__logout {
+  margin-top: auto;
+  text-decoration: none;
+  color: var(--color-primary-1);
+}
+
+.link-effect {
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  align-self: flex-start;
+  transition: all 0.3s;
+}
+.link-effect:hover {
+  border-bottom: 1px solid var(--color-primary-3);
+}
+
+.active {
+  border-bottom: 1px solid var(--color-primary-3);
+}
+.account__heading-text {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 168%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.account__address-book h4{
+    margin-top: 2.4rem;
+    margin-bottom: 1.2rem;
+}
+.account__address-link{
+    margin-top: 4rem;
+    text-decoration: none;
+    color: var(--color-primary-1);
+    border-color: var(--color-primary-1);
+}
