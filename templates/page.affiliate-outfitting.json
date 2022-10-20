@@ -4,9 +4,15 @@
       "type": "affiliate-hero",
       "settings": {
       }
+    },
+    "affiliate-promo": {
+      "type": "affiliate-promo",
+      "settings": {
+      }
     }
   },
   "order": [
-    "affiliate-hero"
+    "affiliate-hero",
+    "affiliate-promo"
   ]
 }

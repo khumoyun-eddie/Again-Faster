@@ -1,0 +1,41 @@
+{{ 'style.affiliate-promo.css' | asset_url | stylesheet_tag }}
+
+<div class="container">
+  <div class="affiliate-promo">
+    <div class="affiliate-box">
+      <h4 class="promo__title">
+        {{section.settings.promo_title | upcase}}
+      </h4>
+      <p class="promo__text">
+        {{section.settings.promo_text}}
+      </p>
+    </div>
+    <div class="affiliate-box">
+      <div class="promo__img-box">
+        <img src="{{ section.settings.promo_img.src | image_url: width: 620 }}" alt="{{ section.settings.promo_img.alt }}" class="promo__img" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Affiliate Promo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "promo_img",
+        "label": "Promo Image"
+      }, {
+        "type": "text",
+        "id": "promo_title",
+        "default": "Don't make costly mistakes at startup. We listen to your needs and provide expertise regarding equipment selection and layout design so you're ready to start training when you open your doors.",
+        "label": "Promo Heading Text"
+      }, {
+        "type": "text",
+        "id": "promo_text",
+        "label": "Promo Text"
+      }
+    ]
+  }
+{% endschema %}}}

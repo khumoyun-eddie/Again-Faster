@@ -1,0 +1,19 @@
+.affiliate-promo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 7.2rem;
+  padding: 8rem 4rem;
+}
+.promo__title {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 168%;
+  letter-spacing: 0.1em;
+}
+.promo__text {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 167.5%;
+  color: #767676;
+  margin-top: 2.4rem;
+}
