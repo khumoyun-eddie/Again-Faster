@@ -19,15 +19,12 @@
       </div>
       <div class="swiper-pagination"></div>
       <div class="product-details">
-        <h4 class="heading-text heading-4">{{ product.title }}
+        <h4 class="heading-text heading-4">
+          {{ product.title }}
         </h4>
-        <script>
-          {% comment %}
-            console.log('{{product | json}}');{% endcomment %}
-        </script>
-        <p class="product-details__price">{{ product.price | money }}
+        <p class="product-details__price">
+          {{ product.price | money }}
         </p>
-
         <div class="product-details__review">
           <div class="yotpo-widget-instance" data-yotpo-instance-id="250138" data-yotpo-product-id="{{ product.id }}"></div>
         </div>
@@ -35,13 +32,10 @@
           {% render 'icon-affirm' %}
           <p>pay as low as 56/mo Learn More</p>
         </div>
-        <div class="product-details__description">{{ product.description }}
+        <div class="product-details__description">
+          {{ product.description }}
         </div>
-        {%- comment -%}
-          <div class="rc-widget-injection-parent"></div>
-        {%- endcomment -%}
-
-        <form action="" data-noVariant="{{ product.has_only_default_variant }}" data-selling_plan_id="{{product.selling_plan_groups.size}}" class="product-details__form">
+        <form action="" data-novariant="{{ product.has_only_default_variant }}" data-selling_plan_id="{{product.selling_plan_groups.size}}" class="product-details__form">
           <div class="product-details__variants-list">
             {% unless product.variants[0].title == 'Default Title' %}
               {% for variant in product.variants %}
@@ -54,42 +48,67 @@
                   {% if quantity <= 0 %}
                   disabled
                   {% endif %}>
-                <label for="{{ variant.id }}" data-price="{{ price }}" data-id="{{ variant.id }}" class="product-details__variants-item{% if quantity <= 0 %} disabled {% endif %}">
+                <label for="{{ variant.id }}" data-price="{{ price }}" data-id="{{ variant.id }}" class="product-details__variants-item {% if quantity <= 0 %} disabled {% endif %}">
                   {{ variant.title }}
                 </label>
               {% endfor %}
             {% else %}
-              <span class="product-details__noVariant" data-productid="{{ product.variants[0].id }}"></span>
+              <span class="product-details__novariant" data-productid="{{ product.variants[0].id }}"></span>
             {% endunless %}
           </div>
           {% if product.selling_plan_groups.size >= 1 %}
-            <div class="recharge-wrapper">
-              <div class="recharge-form">
-                <input id="not-subscribe" class="recharge-input" name="options" type="radio" value="{{product.selected_or_first_available_variant.id}}">
-                <label for="not-subscribe" class="recharge-label">
-                  One-Time Purchase
-                </label>
-              </div>
-              <div class="recharge-form">
-                {% assign new_price = product.variants[0].selling_plan_allocations[0].price | money %}
-                <input id="subscribe" class="recharge-input" checked name="options" type="radio" value="subscribe">
-                <label for="subscribe" class="recharge-label">
-                  Subscribe & save
-                  {{new_price}}
-                </label>
-              </div>
 
-              <div class="recharge-frequency">
-                {% for item in product.selling_plan_groups[0].selling_plans %}
-                  <label for="recharge-frequency-label">
-                    <input type="radio" name="freq" value="{{item.id}}" id="{{product.selected_or_first_available_variant.id}}" class="recharge-frequency-option">
-                    <span class="recharge-text">
-                      {{item.name | remove: 'Delivery every'}}
+            <div class="form__block">
+              <p class="block__header">Select Your Purchase Type</p>
+              <ul class="block__options">
+                <li class="options__item" data-open-accessibility-text-original="16px" style="font-size: 16px;">
+                  <input class="recharge-option" name="purchase-type" value="{{ product.selected_or_first_available_variant.id }}" name="one" id="one-time-purchase" type="radio" checked hidden/>
+                  <label class="label--checkbox" for="one-time-purchase">One-time purchase</label>
+                </li>
+                <li class="options__item" data-open-accessibility-text-original="16px" style="font-size: 16px;">
+                  <script>
+                    console.log({{product | json }})
+                  </script>
+                  {%- assign new_price = product.variants[0].selling_plan_allocations[0].price  -%}
+                  {%- assign procent = new_price | divided_by: product.price -%}
+                  <script>
+                    console.log({{new_price | divided_by: product.price | json }})
+                  </script>
+                  <input class="recharge-option" name="purchase-type" id="subscribe-and-save" value="subscribe" type="radio" hidden/>
+                  <label class="label--checkbox" for="subscribe-and-save">Subscribe & Save
+                    <span class="new_price">{{ 1 | minus: procent }}
+                      %
                     </span>
                   </label>
-                {% endfor %}
-              </div>
+                </li>
+              </ul>
             </div>
+            <div class="form__block" id="subscribe-and-save-form-block">
+              <p class="block__subtitle" data-open-accessibility-text-original="14px" style="font-size: 14px;">
+                Choose fewer shipments and we pass along the savings to you.
+              </p>
+              <p class="block__header" data-open-accessibility-text-original="16px" style="font-size: 16px;">
+                <span></span>
+                Select your delivery option?</p>
+              <ul id="subscribe-and-save-options" class="block__options">
+                {% for item in product.selling_plan_groups[0].selling_plans %}
+                  <li class="options__item">
+                    <input class="recharge-frequent-option" value="{{ item.id }}" data-id="{{product.selected_or_first_available_variant.id}}" name="sub-options" id="{{ item.id }}" type="radio" hidden>
+                    <label class="label--simple full" for="{{item.id}}">
+                      <div class="weight">
+                        <span class="paragraph">
+                          {{ item.name | remove: 'Delivery every' }}
+                        </span>
+                      </div>
+                    </label>
+                  </li>
+                {% endfor %}
+
+              </ul>
+            </div>
+            <p id="free-sheeping-block" class="free-sheeping" data-open-accessibility-text-original="17px" style="display: none">
+              YOU'RE QUALIFIED FOR FREE SHIPPING
+            </p>
           {% endif %}
           <p class="product-details__services">Available for Free shipping!</p>
           <button type="submit" class="btn btn-primary product-details__add-cart">Add to Cart</button>
@@ -130,19 +149,16 @@
   });
 </script>
 <script>
-  let variant = {{ product.variants | json }}
+  // let variant = {{ product.variants | json }}
   const priceTag = document.querySelector('.product-details__price');
   const varinatsList = document.querySelector('.product-details__variants-list');
   let variantId = "{{ product.id }}";
   varinatsList.addEventListener('click', function(e) {
     const target = e.target.closest('.product-details__variants-item');
-    if (! target) 
+    if (! target) {
       return;
-    
-
-
-
-    badgeContainer(target.dataset.price);
+    }
+    priceTag.innerText = badgeContainer(target.dataset.price);
     variantId = target.dataset.id;
   });
   const badgeContainer = (price) => {
@@ -150,8 +166,25 @@
       style: 'currency',
       currency: 'USD'
     };
-    priceTag.innerText = new Intl.NumberFormat('en-US', opt).format(price / 100);
+    return new Intl.NumberFormat('en-US', opt).format(price / 100);
   };
+
+  const oneTimePurchase = document.querySelector('#one-time-purchase')
+  const subscribeAndSave = document.querySelector('#subscribe-and-save')
+  const oneTimePurchaseFormBlock = document.querySelector('#one-time-purchase-form-block');
+  const subscribeAndSaveFormBlock = document.querySelector('#subscribe-and-save-form-block');
+  const deliveryOptions = document.querySelector('.recharge-frequent-option:first-of-type')
+
+  subscribeAndSaveFormBlock.style.display = 'none';
+
+  oneTimePurchase.addEventListener('click', (e) => {
+    subscribeAndSaveFormBlock.style.display = 'none';
+  })
+
+  subscribeAndSave.addEventListener('click', (e) => {
+    subscribeAndSaveFormBlock.style.display = 'block';
+    deliveryOptions.setAttribute('checked', 'checked')
+  })
 </script>
 {% schema %}
   {

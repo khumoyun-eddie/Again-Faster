@@ -60,9 +60,9 @@ class Cart {
     cartItemsWrapper.innerHTML = "";
     // if(cartDetails.length === 0) return
     for (let item of cartDetails.items) {
-      console.log(item);
+      // console.log(item);
       const template = `
-      <div class="side-cart__product item" data-id="${item.id}" data-amount="${item.quantity}" >
+      <div class="side-cart__product item" data-id="${item.key}" data-amount="${item.quantity}" >
       <a href="${item.url}" class="item__img-wrapper">
         <img src="${item.image}" class="item__img" alt="${item.title}">
       </a>
@@ -109,6 +109,7 @@ class Cart {
   }
 
   addToCart(productID) {
+
     const formData = {
       items: [
         {
@@ -183,25 +184,24 @@ closeIcon.addEventListener("click", () => {
 form?.addEventListener("submit", function (e) {
   e.preventDefault();
   if (e.target.dataset.selling_plan_id >= 1) {
-    let recharge_id = form.querySelector(".recharge-input:checked").value;
+    let recharge_id = form.querySelector(".recharge-option:checked").value;
     if (recharge_id == "subscribe") {
-      let recharge_freq_id = form.querySelector(".recharge-frequency-option:checked").value;
-      let recharge_prod_id = form.querySelector(".recharge-frequency-option:checked").id;
+      let recharge_freq_id = form.querySelector(".recharge-frequent-option:checked").value;
+      let recharge_prod_id = form.querySelector(".recharge-frequent-option:checked").dataset.id;
       sideCart.addToCartWithSellingPlans(recharge_prod_id, 1, recharge_freq_id);
     } else {
-      sideCart.addToCart(recharge_id);
+      // sideCart.addToCart(recharge_id);
+      let productID;
+      if (e.target.dataset.novariant == "true") {
+        const span = form.querySelector(".product-details__novariant");
+        productID = span.dataset.productid;
+      } else {
+        const variantId = document.querySelector(".product-details__variants-item-input:checked");
+        productID = variantId.value;
+      }
+      sideCart.addToCart(productID);
     }
-  } else {
-    let productID;
-    if (e.target.dataset.novariant == "true") {
-      const span = form.querySelector(".product-details__noVariant");
-      productID = span.dataset.productid;
-    } else {
-      const variantId = document.querySelector(".product-details__variants-item-input:checked");
-      productID = variantId.value;
-    }
-    sideCart.addToCart(productID);
-  }
+  } 
 });
 
 const itemWrapper = document.querySelector(".side-cart__products-list");
