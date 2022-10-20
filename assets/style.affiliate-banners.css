@@ -1,0 +1,58 @@
+.affiliate-banners {
+  padding: 8rem 4rem 12rem 4rem;
+}
+.banners-header {
+  text-align: center;
+  margin-bottom: 13rem;
+}
+.banners__title {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 143%;
+  margin-top: 4rem;
+}
+.text-special {
+  color: #e8ddcc;
+}
+.banners-list {
+  list-style: none;
+}
+.banner-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 4rem;
+}
+.banner-item:not(:first-of-type){
+    margin-top: 8rem;
+}
+.banner-item:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
+.banner__img-box {
+  width: 65%;
+  height: 100%;
+}
+.banner__img{
+    width: 100%;
+}
+
+.banner__content-box {
+  width: 35%;
+}
+
+.banner__title {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 168%;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.6rem;
+}
+
+.banner__text {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 167.5%;
+  color: #767676;
+}

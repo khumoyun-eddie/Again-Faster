@@ -9,10 +9,16 @@
       "type": "affiliate-promo",
       "settings": {
       }
+    }, 
+    "affiliate-banners": {
+      "type": "affiliate-banners",
+      "settings": {
+      }
     }
   },
   "order": [
     "affiliate-hero",
-    "affiliate-promo"
+    "affiliate-promo",
+    "affiliate-banners"
   ]
 }
