@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "affiliate-hero": {
+      "type": "affiliate-hero",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "affiliate-hero"
+  ]
+}
