@@ -38,6 +38,7 @@
       "footer": {
         "type": "footer",
         "settings": {
+          "logo": "shopify:\/\/shop_images\/A-F.png"
         }
       }
     },
