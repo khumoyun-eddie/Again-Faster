@@ -8,10 +8,85 @@
     "affiliate-promo": {
       "type": "affiliate-promo",
       "settings": {
+        "promo_img": "shopify:\/\/shop_images\/Brooke_3pm_Workout-02_2.png",
+        "promo_title": "Don't make costly mistakes at startup. We listen to your needs and provide expertise regarding equipment selection and layout design so you're ready to start training when you open your doors.",
+        "promo_text": "Again Faster Equipment has supplied thousands of fitness affiliates and commercial gyms around the world since 2006. We are excited to help you design your new gym or upgrade your existing facility with the highest quality equipment at the best prices around."
       }
-    }, 
+    },
     "affiliate-banners": {
       "type": "affiliate-banners",
+      "blocks": {
+        "ac686998-1e1c-4900-9041-6fe189ebc8c2": {
+          "type": "banner",
+          "settings": {
+            "banner_img": "shopify:\/\/shop_images\/banner-1.jpg",
+            "banner_title": "Pullup rings",
+            "banner_text": "As the centerpiece of your gym, the Again Faster Competition Series lineup is sure to live up to its name. Featuring heavy-duty 11-gauge 3in x 3in uprights, this line has been designed in conjunction with top strength and conditioning athletes in mind."
+          }
+        },
+        "5deecea9-0dce-4592-a19c-4d04a37ee5b1": {
+          "type": "banner",
+          "settings": {
+            "banner_img": "shopify:\/\/shop_images\/banner-2.jpg",
+            "banner_title": "Bumper plates",
+            "banner_text": "Our Crumb Rubber Bumper Plates have supplied thousands of gyms across the country with an affordable, yet durable bumper plate. For gyms looking for kilogram weightlifting plates, we also have a Pro Competition Series of bumpers."
+          }
+        },
+        "2cc868b5-c9ed-477f-b066-686cf32e987b": {
+          "type": "banner",
+          "settings": {
+            "banner_img": "shopify:\/\/shop_images\/banner-3.jpg",
+            "banner_title": "Olympic barbells",
+            "banner_text": "The Evolution and Team Barbells have been fan favorites from the start. The Evolution bar is the perfect bushing bar for those doing general lifting or up to intermediate lifting in any sport, while the Team Bar is a hybrid bearing offering a smooth spin with increased durability for any level athlete."
+          }
+        },
+        "d6a10153-ae31-42f5-b5a7-8e0218eac41d": {
+          "type": "banner",
+          "settings": {
+            "banner_img": "shopify:\/\/shop_images\/banner-4.jpg",
+            "banner_title": "Weights",
+            "banner_text": "From kettlebells to sandbags, Again Faster carries all of the most popular products requested by affiliates at the quality your members deserve."
+          }
+        },
+        "70a899a4-f267-45e4-abb0-4cfa0a8ded31": {
+          "type": "banner",
+          "settings": {
+            "banner_img": "shopify:\/\/shop_images\/banner-5.jpg",
+            "banner_title": "Medicine balls",
+            "banner_text": "Our handsewn medicine balls have quickly became one of our most popular products. A textured grip, modern look, and color-coded strips are a few features that make these great for any gym."
+          }
+        },
+        "32eaaf07-3818-4eed-899e-92912b751b68": {
+          "type": "banner",
+          "settings": {
+            "banner_img": "shopify:\/\/shop_images\/banner-6.jpg",
+            "banner_title": "Storage",
+            "banner_text": "Determining the equipment you need is only half the battle. We will help figure out the best storage solutions to optimize floor and create the professional look you are seeking. We offer a wide range of space-saving options to fit any budget."
+          }
+        },
+        "9ed16600-d9fe-43bd-a6c4-738fcc44b017": {
+          "type": "banner",
+          "settings": {
+            "banner_img": "shopify:\/\/shop_images\/banner-7.jpg",
+            "banner_title": "Flooring",
+            "banner_text": "Gym flooring is a very important, yet often overlooked part of the facility outfitting process. We offer high-performance rubber flooring in multiple colors as well as custom turf options. Tell us about the size of your space and we'll help you determine what will work best."
+          }
+        }
+      },
+      "block_order": [
+        "ac686998-1e1c-4900-9041-6fe189ebc8c2",
+        "5deecea9-0dce-4592-a19c-4d04a37ee5b1",
+        "2cc868b5-c9ed-477f-b066-686cf32e987b",
+        "d6a10153-ae31-42f5-b5a7-8e0218eac41d",
+        "70a899a4-f267-45e4-abb0-4cfa0a8ded31",
+        "32eaaf07-3818-4eed-899e-92912b751b68",
+        "9ed16600-d9fe-43bd-a6c4-738fcc44b017"
+      ],
+      "settings": {
+      }
+    },
+    "affiliate-consultation": {
+      "type": "affiliate-consultation",
       "settings": {
       }
     }
@@ -19,6 +94,7 @@
   "order": [
     "affiliate-hero",
     "affiliate-promo",
-    "affiliate-banners"
+    "affiliate-banners",
+    "affiliate-consultation"
   ]
 }
