@@ -6,6 +6,9 @@
     "affiliate-nav": {
       "type": "affiliate-navigation" 
     },
+    "affiliate-packages": {
+      "type": "affiliate-packages" 
+    },
     "affiliate-promo": {
       "type": "affiliate-promo",
       "settings": {
@@ -86,6 +89,10 @@
       "settings": {
       }
     },
+
+    "affiliate-financing": {
+      "type": "affiliate-financing"
+    },
     "affiliate-consultation": {
       "type": "affiliate-consultation",
       "settings": {
@@ -96,7 +103,9 @@
     "affiliate-hero",
     "affiliate-nav",
     "affiliate-promo",
+    "affiliate-packages",
     "affiliate-banners",
+    "affiliate-financing",
     "affiliate-consultation"
   ]
 }

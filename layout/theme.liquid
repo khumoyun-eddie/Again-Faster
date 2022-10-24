@@ -10,8 +10,8 @@
 
     {{ content_for_header }}
     <!-- Header hook for plugins -->
-
     {{ 'style.base.css' | asset_url | stylesheet_tag }}
+    {{ 'style.fonts.css' | asset_url | stylesheet_tag }}
     {{ 'style.typography.css' | asset_url | stylesheet_tag }}
     {{ 'style.buttons.css' | asset_url | stylesheet_tag }}
     {{ 'style.reviews-yotpo.css' | asset_url | stylesheet_tag }}
