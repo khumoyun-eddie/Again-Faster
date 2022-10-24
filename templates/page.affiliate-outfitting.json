@@ -1,13 +1,17 @@
 {
   "sections": {
     "affiliate-hero": {
-      "type": "affiliate-hero" 
+      "type": "affiliate-hero",
+      "settings": {
+        "content_feature_title": "Commercial gym",
+        "content_title": "Affiliate Outfitting",
+        "content_bg_img": "shopify:\/\/shop_images\/AF_Affiliate_outlifting_Hero.jpg"
+      }
     },
     "affiliate-nav": {
-      "type": "affiliate-navigation" 
-    },
-    "affiliate-packages": {
-      "type": "affiliate-packages" 
+      "type": "affiliate-navigation",
+      "settings": {
+      }
     },
     "affiliate-promo": {
       "type": "affiliate-promo",
@@ -15,6 +19,11 @@
         "promo_img": "shopify:\/\/shop_images\/Brooke_3pm_Workout-02_2.png",
         "promo_title": "Don't make costly mistakes at startup. We listen to your needs and provide expertise regarding equipment selection and layout design so you're ready to start training when you open your doors.",
         "promo_text": "Again Faster Equipment has supplied thousands of fitness affiliates and commercial gyms around the world since 2006. We are excited to help you design your new gym or upgrade your existing facility with the highest quality equipment at the best prices around."
+      }
+    },
+    "affiliate-packages": {
+      "type": "affiliate-packages",
+      "settings": {
       }
     },
     "affiliate-banners": {
@@ -89,9 +98,10 @@
       "settings": {
       }
     },
-
     "affiliate-financing": {
-      "type": "affiliate-financing"
+      "type": "affiliate-financing",
+      "settings": {
+      }
     },
     "affiliate-consultation": {
       "type": "affiliate-consultation",
