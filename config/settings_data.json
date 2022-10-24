@@ -1,6 +1,53 @@
 {
-  "current": "Default",
+  "current": {
+    "sections": {
+      "announcement": {
+        "type": "announcement",
+        "blocks": {
+          "announcement-0": {
+            "type": "announcement",
+            "settings": {
+              "text": "20% OFF Sitewide until 9\/12",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "announcement-0"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo-light": "shopify:\/\/shop_images\/Group.png",
+          "logo-dark": "shopify:\/\/shop_images\/primary_no_text.png"
+        }
+      },
+      "cart": {
+        "type": "cart",
+        "settings": {
+          "title": "My Cart",
+          "add_cart_title": "Continue to Checkout",
+          "link_checkout": "",
+          "btn_sellers": "Shop Best Sellers",
+          "link_best_sellers": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/A-F.png"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
-    "Default": {}
+    "Default": {
+    }
   }
 }

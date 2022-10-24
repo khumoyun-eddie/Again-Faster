@@ -1,9 +1,10 @@
 {
   "sections": {
     "affiliate-hero": {
-      "type": "affiliate-hero",
-      "settings": {
-      }
+      "type": "affiliate-hero" 
+    },
+    "affiliate-nav": {
+      "type": "affiliate-navigation" 
     },
     "affiliate-promo": {
       "type": "affiliate-promo",
@@ -93,6 +94,7 @@
   },
   "order": [
     "affiliate-hero",
+    "affiliate-nav",
     "affiliate-promo",
     "affiliate-banners",
     "affiliate-consultation"
