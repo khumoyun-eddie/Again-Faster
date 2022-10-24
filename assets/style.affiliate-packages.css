@@ -1,0 +1,178 @@
+.packages-section {
+    width: 100%;
+}
+
+.packages-section .container {
+    max-width: 1920px;
+    margin: 0 auto;
+
+}
+
+.section__title {
+    margin-bottom: 2.4rem;
+    text-align: center;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 130%;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+}
+
+.section__text {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 167.5%;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.packages-section .section__main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1px;
+    margin-bottom: 4rem;
+
+
+}
+
+.section__main .bucket .blur {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6.5em;
+    background: linear-gradient(0deg, #F1F1F1 9.23%, rgba(241, 241, 241, 0) 90.77%);
+}
+
+.section__main .bucket.is-active{
+    height:76rem ;
+}
+.section__main .bucket {
+    position: relative;
+    height: 35.3rem;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    padding: 8rem 10.8rem 4rem 10.8rem;
+    align-items: center;
+    transition: height 500ms;
+
+}
+
+.section__main .bucket h1 {
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 130%;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 1.9rem;
+}
+
+.section__main .bucket h5 {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 168%;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+}
+
+.section__main .bucket-list__item {
+    margin-bottom: 2rem;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 167.5%;
+    color: #767676;
+}
+
+.bucket-list__cta {
+    align-self: flex-start;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.175em;
+    text-transform: uppercase;
+    color: #000;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    margin-top: 2rem;
+}
+
+
+.hide-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: max-content;
+    margin: 0 auto;
+    display: none;
+    cursor: pointer;
+}
+
+.hide-cta p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 167.5%;
+    text-align: center;
+    text-transform: capitalize;
+}
+.hide-cta svg{
+    animation-name: sliding;
+    animation-duration: 1.75s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+
+}
+
+.section__cta {
+    display: block;
+    max-width: max-content;
+    padding: 1.4rem 7rem;
+    background-color: #000;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.175em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.section__small {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 167.5%;
+    margin-top: 2.4rem;
+    text-align: center;
+}
+
+.section__small a {
+    color: #000;
+    border-bottom: 1px solid #C2A578;
+    padding-bottom: 4px;
+}
+
+
+@keyframes sliding{
+    0%{
+        transform: translateY(20px);
+    }
+    33.3%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(20px);
+    }
+}
+

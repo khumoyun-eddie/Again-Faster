@@ -1,0 +1,184 @@
+{{ 'style.affiliate-packages.css' | asset_url | stylesheet_tag }}
+<div class="packages-section" id="packages">
+    <div class="container">
+        <h3 class="section__title">
+            Affiliate packages
+        </h3>
+        <p class="section__text">
+            Ready to stop planning and start training? Our equipment packages provide the right amount of equipment to
+            get you up and running fast.
+        </p>
+
+        <div class="section__main">
+            <div class="bucket  max-height">
+                <h1>5</h1>
+                <h5>Athletic package</h5>
+                <ul class="bucket-lit">
+                    <li class="bucket-list__item">
+                        (1) 1,000LBS Crumb Rubber Bumper Plates
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Evolution Barbells - 20kg or 15kg
+                    </li>
+                    <li class="bucket-list__item">
+                        (2) X-1 Squat/Press/Bench Stand
+                    </li>
+                    <li class="bucket-list__item">
+                        (1) Concept2 Model D Rower with PM5 Monitor
+                    </li>
+                    <li class="bucket-list__item">
+                        (1) 200lbs of Team Kettlebells
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Wood Ring Set with Straps
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Medicine Balls
+                    </li>
+                    <li class="bucket-list__item">
+                        (2) Wooden 3n1 Plyoboxes - 20x24x30
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Team Speed Jump Ropes
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Ab Fitness Mats
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Olympic Spring Collar Pairs
+                    </li>
+
+                </ul>
+                <a href="#" class="bucket-list__cta">view more</a>
+                <div class="blur"></div>
+            </div>
+            <div class="bucket  max-height">
+                <h1>10</h1>
+                <h5>Athletic package</h5>
+                <ul class="bucket-lit">
+                    <li class="bucket-list__item">
+                        (1) 1,000LBS Crumb Rubber Bumper Plates
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Evolution Barbells - 20kg or 15kg
+                    </li>
+                    <li class="bucket-list__item">
+                        (2) X-1 Squat/Press/Bench Stand
+                    </li>
+                    <li class="bucket-list__item">
+                        (1) Concept2 Model D Rower with PM5 Monitor
+                    </li>
+                    <li class="bucket-list__item">
+                        (1) 200lbs of Team Kettlebells
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Wood Ring Set with Straps
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Medicine Balls
+                    </li>
+                    <li class="bucket-list__item">
+                        (2) Wooden 3n1 Plyoboxes - 20x24x30
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Team Speed Jump Ropes
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Ab Fitness Mats
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Olympic Spring Collar Pairs
+                    </li>
+
+                </ul>
+                <a href="#" class="bucket-list__cta">view more</a>
+                <div class="blur"></div>
+            </div>
+            <div class="bucket  max-height">
+                <h1>15</h1>
+                <h5>Athletic package</h5>
+                <ul class="bucket-lit">
+                    <li class="bucket-list__item">
+                        (1) 1,000LBS Crumb Rubber Bumper Plates
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Evolution Barbells - 20kg or 15kg
+                    </li>
+                    <li class="bucket-list__item">
+                        (2) X-1 Squat/Press/Bench Stand
+                    </li>
+                    <li class="bucket-list__item">
+                        (1) Concept2 Model D Rower with PM5 Monitor
+                    </li>
+                    <li class="bucket-list__item">
+                        (1) 200lbs of Team Kettlebells
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Wood Ring Set with Straps
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Medicine Balls
+                    </li>
+                    <li class="bucket-list__item">
+                        (2) Wooden 3n1 Plyoboxes - 20x24x30
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Team Speed Jump Ropes
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Ab Fitness Mats
+                    </li>
+                    <li class="bucket-list__item">
+                        (5) Olympic Spring Collar Pairs
+                    </li>
+
+                </ul>
+                <a href="#" class="bucket-list__cta">view more</a>
+                <div class="blur"></div>
+            </div>
+        </div>
+
+        <a type="button" class="section__cta show-more">view what's inside</a>
+
+        <div class="hide-cta">
+            <p>hide</p>
+            {% render "icon-arrow-up" %}
+        </div>
+
+        <p class="section__small">Need to tweak? Any package can be customized to meet your specific needs, simply
+            <a href="#">request a personal consultation</a>.</p>
+    </div>
+</div>
+
+<script>
+    let showMoreBtn=document.querySelector('.section__cta.show-more');
+    let buckets=document.querySelectorAll('.bucket.max-height');
+    let blur=document.querySelector('.bucket .blur');
+    showMoreBtn.addEventListener('click',()=>{
+        for(let bucket of buckets){
+            bucket.classList.add('is-active');
+            for(let element of bucket.children){
+                if(element.classList.contains('blur')){
+                    element.style.display="none";
+                }
+            }
+        }
+        showMoreBtn.style.display='none';
+        hideBtnDiv.style.display='flex';
+    })
+
+    let hideBtn=document.querySelector(".hide-cta p");
+    let hideBtnDiv=document.querySelector(".hide-cta");
+    hideBtn.addEventListener('click',()=>{
+        for(let bucket of buckets){
+            bucket.classList.remove('is-active');
+            for(let element of bucket.children){
+                if(element.classList.contains('blur')){
+                    element.style.display="block";
+                }
+            }
+        }
+        showMoreBtn.style.display='flex';
+        hideBtnDiv.style.display='none';
+    })
+</script>
