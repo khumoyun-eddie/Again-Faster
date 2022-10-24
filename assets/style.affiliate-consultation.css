@@ -1,0 +1,22 @@
+.affiliate-consult {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 4rem;
+  padding: 12rem;
+}
+.form-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 167.5%;
+  margin-bottom: 2.4rem;
+  width: 70%;
+}
+.consult-info{
+    padding-right: 9rem;
+}
+.consult__text{
+    margin-top: 2.4rem;
+    font-size: 1.4rem;
+    line-height: 167.5%;
+    color: #353535;
+}

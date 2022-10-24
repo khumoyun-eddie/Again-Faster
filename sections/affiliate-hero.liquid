@@ -1,7 +1,42 @@
-<h1>Affiliate Outfitting</h1>
+{{ 'style.affiliate-hero.css' | asset_url | stylesheet_tag }}
+
+<div class="container-hero-img">
+  <div class="hero-img">
+    <div class="hero-img__content">
+      <h5 class="content__feature-title heading-5">{{section.settings.content_feature_title}}</h5>
+      <h3 class="content__title heading-3">{{section.settings.content_title}}</h3>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-img{
+    background:url('{{section.settings.content_bg_img | image_url}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Section Hero",
+    "settings": [
+      {
+        "type": "text",
+        "id": "content_feature_title",
+        "label": "Feature Title"
+      },
+      {
+        "type": "text",
+        "id": "content_title",
+        "label": "Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "content_bg_img",
+        "label": "Section Background Image"
+      }
+    ]
   }
 {% endschema %}

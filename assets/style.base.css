@@ -1,3 +1,4 @@
+
 :root {
   --color-primary-1: #000;
   --color-primary-2: #fff;
@@ -22,6 +23,7 @@
 
 html {
   font-size: 62.5%; 
+  scroll-behavior: smooth;
 }
 
 body {
@@ -33,6 +35,12 @@ body {
 .container{
   max-width: 144rem;
   margin: 0 auto;
+}
+a{
+  text-decoration: none;
+}
+li{
+  list-style: none;
 }
 main{
   padding-top: 4rem;

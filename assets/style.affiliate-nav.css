@@ -1,0 +1,24 @@
+.section-nav {
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 2rem;
+}
+
+.section-nav .nav {
+    max-width: 1920px;
+    display: flex;
+    gap: 4rem;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.section-nav .nav .nav-link {
+    font-family: "Oswald";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 168%;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #000000;
+}

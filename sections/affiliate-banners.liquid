@@ -1,0 +1,57 @@
+{{ 'style.affiliate-banners.css' | asset_url | stylesheet_tag }}
+
+<div class="container">
+  <div class="affiliate-banners" id="why-we">
+    <div class="banners-header">
+      <h4 class="heading-text heading-4">why again faster?</h4>
+      <h2 class="banners__title">
+        Again Faster stands behind our products. Our barbells and rigs are guaranteed for life, and all products carry a strong
+        <span class="text-special">warranty</span>.
+      </h2>
+    </div>
+    <ul class="banners-list">
+      {% for block in section.blocks%}
+        {% assign item = block.settings %}
+        <li class="banner-item">
+          <div class="banner__img-box">
+            <img src="{{item.banner_img | image_url: width:830}}" class="banner__img" alt="" loading="lazy">
+          </div>
+          <div class="banner__content-box">
+            <h6 class="banner__title">
+              {{item.banner_title | upcase}}
+            </h6>
+            <p class="banner__text">{{item.banner_text}}
+            </p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Affiliate Banners",
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "banner_img",
+            "label": "Banner Image"
+          }, {
+            "type": "text",
+            "id": "banner_title",
+            "label": "Banner Title"
+          }, {
+            "type": "text",
+            "id": "banner_text",
+            "label": "Banner Text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

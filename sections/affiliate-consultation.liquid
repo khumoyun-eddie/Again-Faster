@@ -1,0 +1,41 @@
+{{ 'style.main-register.css' | asset_url | stylesheet_tag }}
+{{ 'style.main-login.css' | asset_url | stylesheet_tag }}
+{{ 'style.affiliate-consultation.css' | asset_url | stylesheet_tag }}
+
+<div class="container">
+  <div class="affiliate-consult" id="consult">
+    <div class="consult-info">
+      <h4 class="heading-text heading-4">consultation</h4>
+      <p class="consult__text">
+        Looking to customize a package or build your own? Our team is here to help build your dream gym.
+      </p>
+    </div>
+    <form class="consult-form">
+      <p class="form-text">
+        Complete the information below and a member of our team will reach out to you.
+      </p>
+      <div class="full-name">
+        <div class="input-group">
+          <input type="text" autocapitalize="on" name="customer[first_name]" placeholder="First name">
+          <label for="first-name">First name</label>
+        </div>
+
+        <div class="input-group">
+          <input type="text" autocomplete="email" autocorrect="off" autocapitalize="off" name="customer[last_name]" placeholder="Last name">
+          <label for="last-name">Last name</label>
+        </div>
+      </div>
+      <div class="input-group">
+        <input type="email" name="customer[email]" placeholder="Email">
+        <label for="email">Email</label>
+      </div>
+      <div class="input-group">
+        <input type="text" name="customer[gym]" placeholder="Gym Name">
+        <label for="email">Gym Name</label>
+      </div>
+      <div class="submit">
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</div>
