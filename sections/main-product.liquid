@@ -3,7 +3,8 @@
 {{ 'style.products-list.css' | asset_url | stylesheet_tag }}
 {{ 'style.product-card.css' | asset_url | stylesheet_tag }}
 {{ 'style.recharge-app.css' | asset_url | stylesheet_tag }}
-<script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/kR3d1i9T5f5dwpIGlby4iTlcDndyEIfj6CIOSFED" async></script>
+
+
 
 <div class="main-product">
   <div class="container">
@@ -12,7 +13,7 @@
         <div class="swiper-wrapper">
           {% for img in product.images %}
             <div class="swiper-slide">
-              <img src="{{ img | image_url: width: '720', height: '900' }}" data-src="{{ image_url }}" data-aspectratio="{{ img.asperct_ratio }}" data-sizes="auto" loading="lazy" data-parent-fit="cover" alt="{{ img.alt | escape }}" class="lazyload">
+              <img src="{{ img | image_url: width: '720', height: '900' }}" data-src="{{ image_url }}" data-aspectratio="{{ img.asperct_ratio }}" data-sizes="auto" loading="lazy" data-parent-fit="cover" alt="{{ img.alt | escape }}" loading="lazy" width height>
             </div>
           {% endfor %}
         </div>
@@ -66,14 +67,10 @@
                   <label class="label--checkbox" for="one-time-purchase">One-time purchase</label>
                 </li>
                 <li class="options__item" data-open-accessibility-text-original="16px" style="font-size: 16px;">
-                  <script>
-                    console.log({{product | json }})
-                  </script>
+
                   {%- assign new_price = product.variants[0].selling_plan_allocations[0].price  -%}
                   {%- assign procent = new_price | divided_by: product.price -%}
-                  <script>
-                    console.log({{new_price | divided_by: product.price | json }})
-                  </script>
+
                   <input class="recharge-option" name="purchase-type" id="subscribe-and-save" value="subscribe" type="radio" hidden/>
                   <label class="label--checkbox" for="subscribe-and-save">Subscribe & Save
                     <span class="new_price">{{ 1 | minus: procent }}
@@ -137,7 +134,10 @@
 </div>
 
 <!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+{% if template == 'product' %}
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/kR3d1i9T5f5dwpIGlby4iTlcDndyEIfj6CIOSFED" async></script>
+{% endif %}
 
 <script>
   swiper = new Swiper('.product-gallery ', {
@@ -175,7 +175,7 @@
   const subscribeAndSaveFormBlock = document.querySelector('#subscribe-and-save-form-block');
   const deliveryOptions = document.querySelector('.recharge-frequent-option:first-of-type')
 
-  subscribeAndSaveFormBlock.style.display = 'none';
+  subscribeAndSaveFormBlock ?. style.display = 'none';
 
   oneTimePurchase.addEventListener('click', (e) => {
     subscribeAndSaveFormBlock.style.display = 'none';

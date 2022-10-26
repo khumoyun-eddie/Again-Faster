@@ -1,7 +1,4 @@
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
 
 {{ 'style.homepage-featured.css' | asset_url | stylesheet_tag }}\
 
@@ -12,14 +9,7 @@
         {% for collection in section.settings.collection_list %}
           <div class="swiper-slide">
             {% # theme-check-disable %}
-            <img
-              class="lazyload"
-              src="{{collection.image | img_url: 'medium'}}"
-              data-width="[540,720,900,1080,1296,1512,1728,1944,2048]"
-              data-sizes="auto"
-              data-parent-fit="cover"
-              alt="{{collection.image.alt | escape}}"
-            >
+            <img loading="lazy" src="{{collection.image | img_url: 'medium'}}" data-width="[540,720,900,1080,1296,1512,1728,1944,2048]" data-sizes="auto" data-parent-fit="cover" alt="{{collection.image.alt | escape}}" width="328" height="334">
             {% # theme-check-enable %}
             <div class="homepage-featured-products__list-card">
               <h5 class="heading-text heading-5">{{ collection.title | link_to: collection.url }}</h5>
@@ -33,7 +23,9 @@
   </div>
 </div>
 <!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+{% if template == 'index' %}
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+{% endif %}
 <script>
   var swiper = new Swiper('.homepage-featured-products__list ', {
     slidesPerView: '{{ section.settings.slider-number }}',
@@ -41,42 +33,41 @@
     scrollbar: {
       el: '.swiper-scrollbar',
       hide: false,
-      dragSize: 250,
+      dragSize: 250
     },
     breakpoints: {
       320: {
         slidesPerView: 1,
-        spaceBetween: 10,
+        spaceBetween: 10
       },
       480: {
         slidesPerView: 2,
-        spaceBetween: 20,
+        spaceBetween: 20
       },
       640: {
         slidesPerView: '{{ section.settings.slider-number }}',
-        spaceBetween: 30,
-      },
-    },
+        spaceBetween: 30
+      }
+    }
   });
 </script>
 {% schema %}
-{
-  "name": "Featured Collection",
-  "settings": [
-    {
-      "type": "collection_list",
-      "id": "collection_list",
-      "label": "Collections"
-    },
-    {
-      "type": "range",
-      "id": "slider-number",
-      "label": "Number of Slides Per View",
-      "max": 6,
-      "min": 2,
-      "step": 1,
-      "default": 4
-    }
-  ]
-}
+  {
+    "name": "Featured Collection",
+    "settings": [
+      {
+        "type": "collection_list",
+        "id": "collection_list",
+        "label": "Collections"
+      }, {
+        "type": "range",
+        "id": "slider-number",
+        "label": "Number of Slides Per View",
+        "max": 6,
+        "min": 2,
+        "step": 1,
+        "default": 4
+      }
+    ]
+  }
 {% endschema %}

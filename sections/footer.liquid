@@ -4,12 +4,7 @@
     <div class="footer__content">
       {% # theme-check-disable %}
 
-      <img
-        src="{{ section.settings.logo.src | image_url: width: 450 }}"
-        alt="{{ section.settings.logo.alt }}"
-        class="footer__logo"
-        loading="lazy"
-      >
+      <img src="{{ section.settings.logo.src | image_url: width: 450 }}" alt="{{ section.settings.logo.alt }}" class="footer__logo" loading="lazy" width height>
       {% # theme-check-enable %}
       <div class="footer__contact">
         <h5 class="heading-text heading-5">NewsLetter</h5>
@@ -23,22 +18,27 @@
           {% render 'icon-mail' %}
         </div>
       </div>
-      <ul class="footer__list">
+      <div>
+
         <h5 class="heading-text heading-5">Again Faster</h5>
-        {% for link in linklists.footer.links %}
-          <li class="footer__item">
-            <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-      <ul class="footer__list">
+        <ul class="footer__list">
+          {% for link in linklists.footer.links %}
+            <li class="footer__item">
+              <a href="{{ link.url }}" aria-label="Link" class="footer__link">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
         <h5 class="heading-text heading-5">Get Help</h5>
-        {% for link in linklists['footer-2'].links %}
-          <li class="footer__item">
-            <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
+        <ul class="footer__list">
+          {% for link in linklists['footer-2'].links %}
+            <li class="footer__item">
+              <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
       <div class="footer__credits">
         <p>&copy;2020 Again Faster. All Rights Reserved</p>
       </div>
@@ -47,14 +47,14 @@
 </footer>
 
 {% schema %}
-{
-  "name": "Footer",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo"
-    }
-  ]
-}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      }
+    ]
+  }
 {% endschema %}

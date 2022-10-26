@@ -3,19 +3,11 @@
   <div class="homepage-collage">
     <div class="main-block">
       {% # theme-check-disable %}
-      <img
-        class="lazyload"
-        src="{{section.settings.image_large.src | img_url:'827x'}}"
-        alt="{{section.settings.image_large.alt | escape}}"
-      >
+      <img loading="lazy" src="{{section.settings.image_large.src | img_url:'827x'}}" width height alt="{{section.settings.image_large.alt | escape}}">
     </div>
     <div class="second-block">
       <div class="second-block__img-box">
-        <img
-          class="lazyload"
-          src="{{section.settings.image_small.src | img_url:'462x'}}"
-          alt="{{section.settings.image_small.alt | escape}}"
-        >
+        <img loading="lazy" src="{{section.settings.image_small.src | img_url:'462x'}}" alt="{{section.settings.image_small.alt | escape}}" width height>
       </div>
       {% # theme-check-enable %}
       <div class="second-block__content">
@@ -35,49 +27,46 @@
 </div>
 
 {% schema %}
-{
-  "tag": "div",
-  "name": "Homepage Collage",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "default": "Multimedia collage",
-      "label": "Collage Heading"
-    },
-    {
-      "type": "text",
-      "id": "sub_heading",
-      "default": "Multimedia collage 2",
-      "label": "Collage Sub-Heading"
-    },
-    {
-      "type": "text",
-      "id": "info",
-      "default": "Info",
-      "label": "Collage Info"
-    },
-    {
-      "type": "text",
-      "id": "button",
-      "default": "Shop Weights",
-      "label": "Collage Button"
-    },
-    {
-      "type": "url",
-      "id": "button_url",
-      "label": "Collage Button Link"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_large",
-      "label": "Collage Main Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_small",
-      "label": "Collage Sub Image"
-    }
-  ]
-}
+  {
+    "tag": "div",
+    "name": "Homepage Collage",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "default": "Multimedia collage",
+        "label": "Collage Heading"
+      },
+      {
+        "type": "text",
+        "id": "sub_heading",
+        "default": "Multimedia collage 2",
+        "label": "Collage Sub-Heading"
+      },
+      {
+        "type": "text",
+        "id": "info",
+        "default": "Info",
+        "label": "Collage Info"
+      },
+      {
+        "type": "text",
+        "id": "button",
+        "default": "Shop Weights",
+        "label": "Collage Button"
+      }, {
+        "type": "url",
+        "id": "button_url",
+        "label": "Collage Button Link"
+      }, {
+        "type": "image_picker",
+        "id": "image_large",
+        "label": "Collage Main Image"
+      }, {
+        "type": "image_picker",
+        "id": "image_small",
+        "label": "Collage Sub Image"
+      }
+    ]
+  }
 {% endschema %}

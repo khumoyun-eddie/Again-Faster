@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <title>{{ page_title }}</title>
     <meta charset="utf-8">
@@ -17,8 +17,21 @@
     {{ 'style.reviews-yotpo.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'lazisizes.min.js' | asset_url }}" defer></script>
     <script src="{{ 'ajax-cart.js' | asset_url }}" defer></script>
-
-    {% comment %} <script src="{{ 'side-cart.js' | asset_url }}" defer></script> {% endcomment %}
+    <style>
+      @font-face {
+        font-family: "Open Sans";
+        src: local("Open Sans"), url('{{ "OpenSans.woff" | asset_url }}') format("woff");
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Oswald";
+        src: local("Oswald"), url('{{ "Oswald.woff" | asset_url }}') format("woff");
+        font-display: swap;
+      }
+    </style>
+    {% comment %}
+      <script src="{{ 'side-cart.js' | asset_url }}" defer></script>
+    {% endcomment %}
   </head>
   <body class="{% if template == "index" %}home{% endif %}">
     {% section 'announcement' %}

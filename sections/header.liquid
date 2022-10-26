@@ -5,32 +5,21 @@
     <div class="container">
       {% # theme-check-disable %}
       {% if template == 'index' %}
-        <img
-          class="navigation__logo"
-          src="{{section.settings.logo-light.src | img_url: '240x'}}"
-          alt="{{section.settings.logo-light.alt}}"
-        >
+        <img class="navigation__logo" src="{{section.settings.logo-light.src | img_url: '240x'}}" alt="{{section.settings.logo-light.alt}}" width height>
       {% else %}
-        <img
-          class="navigation__logo"
-          src="{{section.settings.logo-dark.src | img_url: '240x'}}"
-          alt="{{section.settings.logo-dark.alt}}"
-        >
+        <img class="navigation__logo" src="{{section.settings.logo-dark.src | img_url: '240x'}}" alt="{{section.settings.logo-dark.alt}}" width height>
       {% endif %}
       {% # theme-check-enable %}
       <ul class="navigation__list">
         {% for link in linklists['again-faster-home-menu'].links %}
           <li class="navigation__item">
-            <a class="navigation__link" href="{{ link.url }}">{{ link.title }}</a>
+            <a class="navigation__link" aria-label="Link" href="{{ link.url }}">{{ link.title }}</a>
           </li>
         {% endfor %}
       </ul>
       <div class="navigation__user">
         {% render 'icon-search' %}
-        <a
-          class="icon-account"
-          href="{% if customer %}{{ "/account" }}{% else %}{{ "/account/login" }}{% endif %}"
-        >
+        <a class="icon-account" aria-label="Link" href="{% if customer %}{{ "/account" }}{% else %}{{ "/account/login" }}{% endif %}">
           {% render 'icon-avatar' %}
         </a>
         {% render 'icon-cart' %}
@@ -40,19 +29,18 @@
 </header>
 
 {% schema %}
-{
-  "name": "Header",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "logo-light",
-      "label": "Logo Light"
-    },
-    {
-      "type": "image_picker",
-      "id": "logo-dark",
-      "label": "Logo Dark"
-    }
-  ]
-}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo-light",
+        "label": "Logo Light"
+      }, {
+        "type": "image_picker",
+        "id": "logo-dark",
+        "label": "Logo Dark"
+      }
+    ]
+  }
 {% endschema %}
