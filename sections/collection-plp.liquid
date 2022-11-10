@@ -1,5 +1,6 @@
 {{ 'style.products-list.css' | asset_url | stylesheet_tag }}
 {{ 'style.product-card.css' | asset_url | stylesheet_tag }}
+{{ 'style.filter-form.css' | asset_url | stylesheet_tag }}
 <style>
   .product-list__content {
     grid-template-columns: repeat({{section.settings.col_nums}}, 1fr);
@@ -13,98 +14,222 @@
         {% for block in section.blocks %}
           {% assign item = block.settings %}
           <li class="products-list__nav-item">
-            <a
-              href="{{ item.col_link }}"
-              class="products-list__nav-link {% if collection.title == item.collection_title %} active {% endif %}"
-            >
+            <a href="{{ item.col_link }}" class="products-list__nav-link {% if collection.title == item.collection_title %} active {% endif %}">
               {{ item.collection_title | upcase }}
             </a>
           </li>
         {% endfor %}
       </ul>
     </div>
-    <div class="products-list__content">
-      {% for item in collection.products %}
-        <div class="products-list__item card">
-          <div class="card__header {% unless item.available %} unavailable {% endunless %}">
-            <ul class="card__tag-list">
-              {% for tag in item.tags %}
-                <li class="card__tag card__tag--{{ tag | downcase | split: ' ' | join: '-' }}">
-                  {{ tag | capitalize }}
-                </li>
-              {% endfor %}
-            </ul>
-            {% # theme-check-disable %}
-            <img
-              src="{{ item.images[0] | image_url: width: 600 }}"
-              loading="lazy"
-              alt=""
-              data-aspectratio="{{ item.aspect_ratio }}"
-              data-sizes="auto"
-              data-parent-fit="cover"
-              alt="{{ product.featured_image.alt | escape }}"
-            >
-            {% # theme-check-enable %}
-            <p class="card__unavailable">Sold Out - Get notified when back in stock</p>
+
+    <div class="products-list__wrapper">
+      <form class="filter-form">
+        <h2 class="filter-title">Filters</h2>
+        {%- for filter in collection.filters -%}
+          <details class="filter-group">
+            <summary class="filter-group-summary">
+              <div>
+                <span class="label-container">
+                  <span class="label-text">{{ filter.label }}</span>
+                </span>
+
+                {%- if filter.active_values.size > 0 -%}
+                  <span>({{ filter.active_values.size }})</span>
+                {%- endif -%}
+              </div>
+            </summary>
+
+            <div class="filter-group-display">
+              <div class="filter-group-display__header">
+                {%- if filter.active_values.size > 0 -%}
+                  <a href="{{ filter.url_to_remove }}" class="filter-group-display__header-reset">Reset</a>
+                {%- endif -%}
+              </div>
+
+              {%- case filter.type -%}
+                {%- when 'boolean' or 'list' -%}
+                  <ul class="filter-group-display__list">
+                    {%- for filter_value in filter.values -%}
+                      <li class="filter-group-display__list-item">
+                        <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
+                          <input type="checkbox" name="{{ filter_value.param_name }}" value="{{ filter_value.value }}" id="Filter-{{ filter.param_name }}-{{ forloop.index }}" {% if filter_value.active -%}checked{%- endif %} {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}>
+                          <span>{{ filter_value.label }}</span>
+                        </label>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+
+                  <div class="filter-group-display__submit">
+                    <input type="submit" value="Apply">
+                  </div>
+                {%- when 'price_range' -%}
+                  <div class="filter-group-display__price-range">
+                    <div class="filter-group-display__price-range-from">
+                      <span>{{ cart.currency.symbol }}</span>
+
+                      <input name="{{ filter.min_value.param_name }}" id="Filter-{{ filter.min_value.param_name }}"
+                        {% if filter.min_value.value -%}
+                        value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                        {%- endif %}
+                        type="number" placeholder="0" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' }}">
+
+                      <label for="Filter-{{ filter.min_value.param_name }}">From</label>
+                    </div>
+                    <div class="filter-group-display__price-range-to">
+                      <span>{{ cart.currency.symbol }}</span>
+
+                      <input name="{{ filter.max_value.param_name }}" id="Filter-{{ filter.max_value.param_name }}"
+                        {% if filter.max_value.value -%}
+                        value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                        {%- endif %}
+                        type="number" placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' }}">
+
+                      <label for="Filter-{{ filter.max_value.param_name }}">To</label>
+                    </div>
+                  </div>
+
+                  <div class="filter-group-display__submit">
+                    <input type="submit" value="Apply">
+                  </div>
+              {%- endcase -%}
+            </div>
+          </details>
+        {%- endfor -%}
+
+      </form>
+
+      <div class="products-list__content-wrapper">
+        <div class="products-list__sort-box">
+          <div class="active-filters">
+
+            <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}" class="active-filters__clear">Clear all:</a>
+
+            {%- for filter in collection.filters -%}
+              {%- if filter.type == "price_range" -%}
+                {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+                  <a class="active-filters__remove-filter" href="{{ filter.url_to_remove }}">
+                    {%- assign min_value = filter.min_value.value | default: 0 -%}
+                    {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
+                    {{ min_value | money }} - {{ max_value | money }}
+                    <span class="btn-clear">&times;</span>
+                  </a>
+                {%- endif -%}
+              {%- else -%}
+                {%- for filter_value in filter.active_values -%}
+                  <a class="active-filters__remove-filter" href="{{ filter_value.url_to_remove }}">
+                    {{ filter.label }}: {{ filter_value.label }}
+                    <span class="btn-clear">&times;</span>
+                  </a>
+                {%- endfor -%}
+              {%- endif- %}
+            {%- endfor -%}
           </div>
 
-          <div class="card__content">
-            <h5 class="heading-text heading-5 card__title">{{ item.title | upcase | link_to: item.url }}</h5>
-            <div class="card__review">
-              {% liquid
+          <select id="sort-by">
+            {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+            {% for option in collection.sort_options %}
+              <option value="{{ option.value }}" {% if option.value == sort_by %}selected="selected"{% endif %}>
+                {{ option.name }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="products-list__content">
+          {% for item in collection.products %}
+            <div class="products-list__item card">
+              <div class="card__header {% unless item.available %} unavailable {% endunless %}">
+                <ul class="card__tag-list">
+                  {% for tag in item.tags %}
+                    <li class="card__tag card__tag--{{ tag | downcase | split: ' ' | join: '-' }}">
+                      {{ tag | capitalize }}
+                    </li>
+                  {% endfor %}
+                </ul>
+                {% # theme-check-disable %}
+                <img src="{{ item.images[0] | image_url: width: 600 }}" loading="lazy" alt="" data-aspectratio="{{ item.aspect_ratio }}" data-sizes="auto" data-parent-fit="cover" alt="{{ product.featured_image.alt | escape }}">
+                {% # theme-check-enable %}
+                <p class="card__unavailable">Sold Out - Get notified when back in stock</p>
+              </div>
+
+              <div class="card__content">
+                <h5 class="heading-text heading-5 card__title">{{ item.title | upcase | link_to: item.url }}</h5>
+                <div class="card__review">
+                  {% liquid
                 render 'icon-star'
                 render 'icon-star'
                 render 'icon-star'
                 render 'icon-star'
                 render 'icon-star'
               %}
+                </div>
+                <div class="card__price">
+                  {{ item.price | money }}
+                </div>
+              </div>
             </div>
-            <div class="card__price">
-              {{ item.price | money }}
-            </div>
-          </div>
+          {% endfor %}
         </div>
-      {% endfor %}
+      </div>
     </div>
   </div>
 </div>
 
 {% schema %}
-{
-  "name": "Products List Page",
-  "blocks": [
-    {
-      "type": "breadcrumb",
-      "name": "Breadcrumb",
-      "settings": [
-        {
-          "type": "url",
-          "id": "col_link",
-          "label": "Collection Link",
-          "info": "Navigation link to the Collection"
-        },
-        {
-          "type": "text",
-          "id": "collection_title",
-          "label": "Collection Name"
-        }
-      ]
-    }
-  ],
-  "settings": [
-    {
-      "type": "range",
-      "min": 2,
-      "max": 6,
-      "step": 1,
-      "id": "col_nums",
-      "label": "Number of Column",
-      "default": 3
-    }
-  ]
-}
+  {
+    "name": "Products List Page",
+    "blocks": [
+      {
+        "type": "breadcrumb",
+        "name": "Breadcrumb",
+        "settings": [
+          {
+            "type": "url",
+            "id": "col_link",
+            "label": "Collection Link",
+            "info": "Navigation link to the Collection"
+          }, {
+            "type": "text",
+            "id": "collection_title",
+            "label": "Collection Name"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "range",
+        "min": 2,
+        "max": 6,
+        "step": 1,
+        "id": "col_nums",
+        "label": "Number of Column",
+        "default": 3
+      }
+    ]
+  }
 {% endschema %}
+
 <script>
-  const text = {{ collection.products | json }}
-  console.log(text)
+  Shopify.queryParams = {};
+
+// Preserve existing query parameters
+  if (location.search.length) {
+    var params = location.search.substr(1).split('&');
+
+    for (var i = 0; i < params.length; i++) {
+      var keyValue = params[i].split('=');
+
+      if (keyValue.length) {
+        Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+      }
+    }
+  }
+
+// Update sort_by query parameter on select change
+  document.querySelector('#sort-by').addEventListener('change', function(e) {
+    var value = e.target.value;
+
+    Shopify.queryParams.sort_by = value;
+    location.search = new URLSearchParams(Shopify.queryParams).toString();
+  });
 </script>

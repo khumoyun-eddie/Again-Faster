@@ -1,6 +1,10 @@
 .products-list {
     padding: 4rem 4rem 9rem 4rem;
 }
+.products-list__wrapper{
+  display: flex;
+  margin-top: 4rem;
+}
 .products-list__header {
     text-align: center;
     display: flex;
@@ -30,8 +34,11 @@
   color: var(--color-primary-1);
   border-bottom: 2px solid var(--color-primary-3);
 }
+.products-list__content-wrapper{
+  width: 80%;
+}
 .products-list__content{
-  margin-top: 4rem;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 1.6rem;
@@ -40,4 +47,18 @@
 
 .products-list__content--small{
   grid-template-columns: repeat(4,1fr);
+}
+.products-list__sort-box{
+  width: 100%;
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.plp-wrapper{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1.6rem;
+  row-gap: 3rem;
 }

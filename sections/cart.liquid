@@ -1,8 +1,8 @@
 {{ 'style.cart.css' | asset_url | stylesheet_tag }}
 
-<form action="{{ routes.cart_url }}" method="post" class="side-cart">
+<form action="{{ routes.cart_url }}" id="cart-drawer" method="post" class="side-cart">
   <div class="side-cart__header">
-    <h4 class="heading-text heading-4 heading-4--regular">{{ section.settings.title }}</h4>
+    <h4 class="heading-text heading-4 heading-4--regular">{{ 'sections.cart.cart_full_title' | t }}</h4>
     <span class="side-cart__close">
       {% render 'icon-close' %}
     </span>
@@ -12,60 +12,51 @@
 
     <div class="side-cart__footer">
       <div class="side-cart__subtotal">
-        <p class="side-cart__subtotal-title">Subtotal</p>
+        <p class="side-cart__subtotal-title">{{ 'sections.cart.cart_subtotal' | t }}</p>
         <p class="side-cart__total-price"></p>
       </div>
-      <p class="side-cart__text">Tax and shipping calculates at checkout.</p>
+      <p class="side-cart__text">{{ 'sections.cart.cart_tax_info' | t }}</p>
       <div class="side-cart__services">
         {% render 'icon-affirm' %}
-        <p>pay as low as 56/mo Learn More</p>
+        <p>{{ 'sections.cart.cart_affirm_info' | t }}</p>
       </div>
       <input type="submit" class="btn btn-primary side-cart__add-cart" name="checkout" value="Continue to Checkout">
     </div>
   </div>
   <div class="side-cart__empty">
-    <p class="empty-title">Your Cart is Empty</p>
+    <p class="empty-title">{{ 'sections.cart.cart_empty_title' | t }}</p>
     {%
-      render 'button-primary',
-      url: {{section.settings.link_best_sellers}},
-      title: {{section.settings.btn_sellers}},
-      btnType: 'light'
+       render 'button-primary',
+       url: {{section.settings.link_best_sellers}}
+       , title: {{section.settings.btn_sellers}}
+       , btnType: 'light'
     %}
   </div>
 </form>
 <div class="overlay"></div>
 {% schema %}
-{
-  "name": "Cart",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Cart Title",
-      "default": "My Cart"
-    },
-    {
-      "type": "text",
-      "id": "add_cart_title",
-      "label": "Cart Checkout Button Label",
-      "default": "Continue to Checkout"
-    },
-    {
-      "type": "url",
-      "id": "link_checkout",
-      "label": "Cart Link"
-    },
-    {
-      "type": "text",
-      "id": "btn_sellers",
-      "label": "Empty Cart Button Label",
-      "default": "Shop Best Sellers"
-    },
-    {
-      "type": "url",
-      "id": "link_best_sellers",
-      "label": "Best Sellers Link"
-    }
-  ]
-}
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "text",
+        "id": "add_cart_title",
+        "label": "Cart Checkout Button Label",
+        "default": "Continue to Checkout"
+      }, {
+        "type": "url",
+        "id": "link_checkout",
+        "label": "Cart Link"
+      }, {
+        "type": "text",
+        "id": "btn_sellers",
+        "label": "Empty Cart Button Label",
+        "default": "Shop Best Sellers"
+      }, {
+        "type": "url",
+        "id": "link_best_sellers",
+        "label": "Best Sellers Link"
+      }
+    ]
+  }
 {% endschema %}

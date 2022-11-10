@@ -4,5 +4,18 @@
       "title": "Not found",
       "subtext_html": "The page you were looking for does not exist"
     }
+  },
+  "sections": {
+    "header": {
+      "announcement": "Announcement"
+    },
+    "cart":{
+      "cart_full_title":"My Bag",
+      "cart_empty_title":"Your bag is empty",
+      "cart_tax_info":"Tax and shipping calculates at checkout.",
+      "cart_affirm_info":"pay as low as 56/mo Learn More",
+      "cart_subtotal":"Subtotal",
+      "cart_checkout_btn":"Continue to Checkout"
+    }
   }
 }

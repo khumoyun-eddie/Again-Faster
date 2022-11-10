@@ -109,7 +109,7 @@ class Cart {
   }
 
   addToCart(productID) {
-
+    console.log('test')
     const formData = {
       items: [
         {
@@ -119,7 +119,9 @@ class Cart {
       ],
     };
 
-    this.addItem(formData).then(() => this.toggleCart());
+    // this.addItem(formData).then(() => this.toggleCart());
+    this.addItem(formData);
+
   }
 
   addToCartWithSellingPlans(id, qty, sellingPlanId) {
@@ -176,32 +178,33 @@ const closeIcon = document.querySelector(".side-cart__close");
 const form = document.querySelector(".product-details__form");
 // sideCart.addCartItemCount()
 openCartIcon.addEventListener("click", () => {
-  sideCart.toggleCart();
+  // sideCart.toggleCart();
 });
 closeIcon.addEventListener("click", () => {
   sideCart.closeModal();
 });
 form?.addEventListener("submit", function (e) {
   e.preventDefault();
+
   if (e.target.dataset.selling_plan_id >= 1) {
-    let recharge_id = form.querySelector(".recharge-option:checked").value;
-    if (recharge_id == "subscribe") {
-      let recharge_freq_id = form.querySelector(".recharge-frequent-option:checked").value;
-      let recharge_prod_id = form.querySelector(".recharge-frequent-option:checked").dataset.id;
-      sideCart.addToCartWithSellingPlans(recharge_prod_id, 1, recharge_freq_id);
-    } else {
-      // sideCart.addToCart(recharge_id);
-      let productID;
-      if (e.target.dataset.novariant == "true") {
-        const span = form.querySelector(".product-details__novariant");
-        productID = span.dataset.productid;
-      } else {
-        const variantId = document.querySelector(".product-details__variants-item-input:checked");
-        productID = variantId.value;
-      }
-      sideCart.addToCart(productID);
-    }
+    // let recharge_id = form.querySelector(".recharge-option:checked").value;
+    // if (recharge_id == "subscribe") {
+    //   let recharge_freq_id = form.querySelector(".recharge-frequent-option:checked").value;
+    //   let recharge_prod_id = form.querySelector(".recharge-frequent-option:checked").dataset.id;
+    //   sideCart.addToCartWithSellingPlans(recharge_prod_id, 1, recharge_freq_id);
+    // } else {
+    //   // sideCart.addToCart(recharge_id);
+    // }
   } 
+  let productID;
+  if (e.target.dataset.novariant == "true") {
+    const span = form.querySelector(".product-details__novariant");
+    productID = span.dataset.productid;
+  } else {
+    const variantId = document.querySelector(".product-details__variants-item-input:checked");
+    productID = variantId.value;
+  }
+  sideCart.addToCart(productID);
 });
 
 const itemWrapper = document.querySelector(".side-cart__products-list");
@@ -238,6 +241,8 @@ for (let i = 0; i < cartBtns.length; i++) {
       ],
     };
 
-    sideCart.addItem(formData).then(() => sideCart.toggleCart());
+    // sideCart.addItem(formData).then(() => sideCart.toggleCart());
+    sideCart.addItem(formData);
+
   });
 }

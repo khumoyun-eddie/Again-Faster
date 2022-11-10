@@ -1,7 +1,7 @@
 {{ 'style.announcement.css' | asset_url | stylesheet_tag }}
 <div class="announcement-bar">
   {% for announcement in section.blocks %}
-    <a href="{{ announcement.settings.link }}" class="announcement" aria-label="More about Announcements">{{ announcement.settings.text }}</a>
+    <a href="{{ announcement.settings.link }}" class="announcement" aria-label="{{ 'sections.header.announcement' | t }}">{{ 'sections.header.announcement' | t }}</a>
   {% endfor %}
 </div>
 {% schema %}

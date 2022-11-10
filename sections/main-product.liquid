@@ -73,8 +73,8 @@
 
                   <input class="recharge-option" name="purchase-type" id="subscribe-and-save" value="subscribe" type="radio" hidden/>
                   <label class="label--checkbox" for="subscribe-and-save">Subscribe & Save
-                    <span class="new_price">{{ 1 | minus: procent }}
-                      %
+                    <span class="new_price">
+                      {{ 1 | minus: procent }}%
                     </span>
                   </label>
                 </li>
@@ -172,16 +172,18 @@
   const oneTimePurchase = document.querySelector('#one-time-purchase')
   const subscribeAndSave = document.querySelector('#subscribe-and-save')
   const oneTimePurchaseFormBlock = document.querySelector('#one-time-purchase-form-block');
-  const subscribeAndSaveFormBlock = document.querySelector('#subscribe-and-save-form-block');
+  const subscribeAndSaveFormBlock = document?.querySelector('#subscribe-and-save-form-block');
   const deliveryOptions = document.querySelector('.recharge-frequent-option:first-of-type')
 
-  subscribeAndSaveFormBlock ?. style.display = 'none';
+  if(subscribeAndSaveFormBlock){
+    subscribeAndSaveFormBlock.style.display = 'none';
+  }
 
-  oneTimePurchase.addEventListener('click', (e) => {
+  oneTimePurchase?.addEventListener('click', (e) => {
     subscribeAndSaveFormBlock.style.display = 'none';
   })
 
-  subscribeAndSave.addEventListener('click', (e) => {
+  subscribeAndSave?.addEventListener('click', (e) => {
     subscribeAndSaveFormBlock.style.display = 'block';
     deliveryOptions.setAttribute('checked', 'checked')
   })
